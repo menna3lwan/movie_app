@@ -34,13 +34,19 @@ abstract class AppFonts {
     fontWeight: FontWeight.normal,
   );
   static const TextStyle bodyMedium = TextStyle(
-    color: AppColors.textSecondary,
-    fontSize: 14,
-    fontWeight: FontWeight.normal,
-  );
-  static const TextStyle labelLarge = TextStyle(
     color: AppColors.textPrimary,
     fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle labelLarge = TextStyle(
+    color: AppColors.secondary,
+    fontSize: 14,
     fontWeight: FontWeight.w600,
+  );
+  static const TextStyle sectionTitle = TextStyle(
+    fontFamily: 'Poppins',
+    color: AppColors.textPrimary,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
   );
 }
