@@ -5,7 +5,7 @@ import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/network/api_urls.dart';
 import 'package:movie_app/core/routing/routes.dart';
 import 'package:movie_app/core/theming/app_fonts.dart';
-import 'package:movie_app/features/home/data/models/movie_dto.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
 abstract class BaseMovieSectionWidget extends StatelessWidget {
   const BaseMovieSectionWidget({super.key});
@@ -16,7 +16,7 @@ abstract class BaseMovieSectionWidget extends StatelessWidget {
   double get cardHeight => 190.0;
   double get shimmerTitleWidth => 80.0;
 
-  Widget buildSection(List<MovieDto> movies) {
+  Widget buildSection(List<MovieEntity> movies) {
     if (movies.isEmpty) return const SizedBox.shrink();
     final displayMovies = movies.length > maxItems
         ? movies.sublist(0, maxItems)
@@ -50,7 +50,7 @@ abstract class BaseMovieSectionWidget extends StatelessWidget {
     );
   }
 
-  Widget buildMovieCard(MovieDto movie) {
+  Widget buildMovieCard(MovieEntity movie) {
     return SizedBox(
       width: cardWidth,
       child: ClipRRect(

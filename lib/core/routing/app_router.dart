@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/features/home/placeholders/details_page.dart';
-import 'package:movie_app/features/home/placeholders/search_page.dart';
+import 'package:movie_app/features/details/details_page.dart';
+import 'package:movie_app/features/search/presentation/pages/search_page.dart';
 import '../../features/home/presentation/pages/home_page.dart';
 import '../common/widgets/main_scaffold.dart';
 import 'routes.dart';
@@ -39,10 +39,7 @@ class AppRouter {
         path: AppRoutes.movieDetail.path,
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
-          int.parse(state.pathParameters['id']!);
-          return DetailsScreen(
-           
-          );
+          return DetailsScreen();
         },
       ),
     ],

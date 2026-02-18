@@ -33,7 +33,7 @@ class TopRatedWidget extends BaseMovieSectionWidget {
             ),
           );
         } else if (state is TopRatedSuccessState) {
-          return buildSection(state.moviesResponseDto.results);
+          return buildSection(state.movies);
         } else {
           return buildShimmerLoading();
         }
