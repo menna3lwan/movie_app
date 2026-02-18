@@ -28,8 +28,10 @@ class ShimmerLoadingWidget extends StatelessWidget {
         children: [
           if (showTitle)
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 12.0,
+              ),
               child: Container(
                 width: titleWidth,
                 height: 20,
@@ -43,7 +45,7 @@ class ShimmerLoadingWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               physics: const NeverScrollableScrollPhysics(),
               itemCount: itemCount,
-              separatorBuilder: (_, _) => const SizedBox(width: 12),
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
                 return SizedBox(
                   width: cardWidth,
@@ -127,14 +129,142 @@ class ShimmerNowPlayingWidget extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child:
-                        Container(height: cardHeight, color: AppColors.surface),
+                    child: Container(
+                      height: cardHeight,
+                      color: AppColors.surface,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MovieRowSkeleton extends StatelessWidget {
+  const MovieRowSkeleton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Skeletonizer(
+      enabled: true,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 95,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 16,
+                        width: double.infinity,
+                        color: AppColors.surface,
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                          height: 16, width: 100, color: AppColors.surface),
+                      const SizedBox(height: 14),
+                      Container(
+                          height: 12, width: 50, color: AppColors.surface),
+                      const SizedBox(height: 8),
+                      Container(
+                          height: 12, width: 80, color: AppColors.surface),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 95,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 16,
+                        width: double.infinity,
+                        color: AppColors.surface,
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                          height: 16, width: 100, color: AppColors.surface),
+                      const SizedBox(height: 14),
+                      Container(
+                          height: 12, width: 50, color: AppColors.surface),
+                      const SizedBox(height: 8),
+                      Container(
+                          height: 12, width: 80, color: AppColors.surface),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              children: [
+                Container(
+                  width: 95,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 16,
+                        width: double.infinity,
+                        color: AppColors.surface,
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                          height: 16, width: 100, color: AppColors.surface),
+                      const SizedBox(height: 14),
+                      Container(
+                          height: 12, width: 50, color: AppColors.surface),
+                      const SizedBox(height: 8),
+                      Container(
+                          height: 12, width: 80, color: AppColors.surface),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
