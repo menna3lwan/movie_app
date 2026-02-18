@@ -1,3 +1,5 @@
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+
 class MovieDto {
   final int id;
   final String? title;
@@ -31,6 +33,19 @@ class MovieDto {
       genreIds: (json['genre_ids'] as List? ?? [])
           .map((e) => (e as num).toInt())
           .toList(),
+    );
+  }
+
+  MovieEntity toEntity() {
+    return MovieEntity(
+      id: id,
+      title: title ?? '',
+      posterPath: posterPath,
+      backdropPath: backdropPath,
+      voteAverage: voteAverage,
+      releaseDate: releaseDate ?? '',
+      overview: overview ?? '',
+      genreIds: genreIds,
     );
   }
 }

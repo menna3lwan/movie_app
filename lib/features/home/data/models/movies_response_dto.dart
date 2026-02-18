@@ -1,4 +1,5 @@
 import 'package:movie_app/features/home/data/models/movie_dto.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
 class MoviesResponseDto {
   final int page;
@@ -22,5 +23,9 @@ class MoviesResponseDto {
       totalPages: json['total_pages'] ?? 0,
       totalResults: json['total_results'] ?? 0,
     );
+  }
+
+  List<MovieEntity> toEntities() {
+    return results.map((e) => e.toEntity()).toList();
   }
 }

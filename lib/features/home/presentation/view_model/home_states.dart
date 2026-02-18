@@ -1,4 +1,4 @@
-import 'package:movie_app/features/home/data/models/movies_response_dto.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
 abstract class HomeStates {}
 
@@ -12,8 +12,8 @@ class NowPlayingErrorState extends HomeStates {
 }
 
 class NowPlayingSuccessState extends HomeStates {
-  final MoviesResponseDto moviesResponseDto;
-  NowPlayingSuccessState(this.moviesResponseDto);
+  final List<MovieEntity> movies;
+  NowPlayingSuccessState(this.movies);
 }
 
 class PopularLoadingState extends HomeStates {}
@@ -24,8 +24,8 @@ class PopularErrorState extends HomeStates {
 }
 
 class PopularSuccessState extends HomeStates {
-  final MoviesResponseDto moviesResponseDto;
-  PopularSuccessState(this.moviesResponseDto);
+  final List<MovieEntity> movies;
+  PopularSuccessState(this.movies);
 }
 
 class TopRatedLoadingState extends HomeStates {}
@@ -36,6 +36,6 @@ class TopRatedErrorState extends HomeStates {
 }
 
 class TopRatedSuccessState extends HomeStates {
-  final MoviesResponseDto moviesResponseDto;
-  TopRatedSuccessState(this.moviesResponseDto);
+  final List<MovieEntity> movies;
+  TopRatedSuccessState(this.movies);
 }

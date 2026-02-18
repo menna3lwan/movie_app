@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/common/widgets/shimmer_loading_widget.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/routing/routes.dart';
-import 'package:movie_app/features/home/data/models/movie_dto.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/view_model/home_cubit.dart';
 import 'package:movie_app/features/home/presentation/view_model/home_states.dart';
 import 'package:movie_app/features/home/presentation/widgets/base_movie_section_widget.dart';
@@ -38,7 +38,7 @@ class _NowPlayingWidgetState extends State<NowPlayingWidget> {
             ),
           );
         } else if (state is NowPlayingSuccessState) {
-          return _buildNowPlayingList(state.moviesResponseDto.results);
+          return _buildNowPlayingList(state.movies);
         } else {
           return _buildShimmerLoading();
         }
@@ -50,7 +50,7 @@ class _NowPlayingWidgetState extends State<NowPlayingWidget> {
     return const ShimmerNowPlayingWidget();
   }
 
-  Widget _buildNowPlayingList(List<MovieDto> movies) {
+  Widget _buildNowPlayingList(List<MovieEntity> movies) {
     if (movies.isEmpty) return const SizedBox.shrink();
     final displayMovies = movies.length > 10 ? movies.sublist(0, 10) : movies;
     final pageCount = (displayMovies.length / 2).ceil();
@@ -76,7 +76,7 @@ class _NowPlayingWidgetState extends State<NowPlayingWidget> {
                         firstIndex + 1,
                       ),
                     ),
-                    const SizedBox(width: 28),
+                    const SizedBox(width: 31),
                     if (secondIndex < displayMovies.length)
                       Expanded(
                         child: _buildTappableCard(
@@ -99,7 +99,7 @@ class _NowPlayingWidgetState extends State<NowPlayingWidget> {
     );
   }
 
-  Widget _buildTappableCard(BuildContext context, MovieDto movie, int rank) {
+  Widget _buildTappableCard(BuildContext context, MovieEntity movie, int rank) {
     return GestureDetector(
       onTap: () => context.push(AppRoutes.movieDetail.withId(movie.id)),
       child: _NowPlayingCard(movie: movie, rank: rank),
@@ -108,7 +108,7 @@ class _NowPlayingWidgetState extends State<NowPlayingWidget> {
 }
 
 class _NowPlayingCard extends StatelessWidget {
-  final MovieDto movie;
+  final MovieEntity movie;
   final int rank;
 
   const _NowPlayingCard({required this.movie, required this.rank});

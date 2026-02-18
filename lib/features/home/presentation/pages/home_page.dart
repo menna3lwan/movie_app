@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/core/di/service_locator.dart';
 import 'package:movie_app/features/home/presentation/view_model/home_cubit.dart';
 import 'package:movie_app/features/home/presentation/widgets/now_playing_widget.dart';
-import 'package:movie_app/features/home/presentation/widgets/popular_widget.dart'
-    show PopularWidget;
+import 'package:movie_app/features/home/presentation/widgets/popular_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/top_rated_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()
+      create: (context) => getIt<HomeCubit>()
         ..getNowPlayingMovies()
         ..getPopularMovies()
         ..getTopRatedMovies(),
@@ -29,7 +29,7 @@ class _HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: SafeArea(
+      body: const SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

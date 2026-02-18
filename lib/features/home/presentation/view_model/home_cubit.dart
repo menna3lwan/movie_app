@@ -3,8 +3,10 @@ import 'package:movie_app/features/home/data/models/movies_response_dto.dart';
 import 'package:movie_app/features/home/domain/use_case/get_now_playing_use_case.dart';
 import 'package:movie_app/features/home/domain/use_case/get_popular_use_case.dart';
 import 'package:movie_app/features/home/domain/use_case/get_top_rated_use_case.dart';
+import 'package:injectable/injectable.dart';
 import 'package:movie_app/features/home/presentation/view_model/home_states.dart';
 
+@injectable
 class HomeCubit extends BaseCubit<HomeStates> {
   HomeCubit() : super(HomeInitialState());
 
@@ -13,7 +15,7 @@ class HomeCubit extends BaseCubit<HomeStates> {
     final result = await GetNowPlayingUseCase.call();
     handleResult<MoviesResponseDto>(
       result,
-      onSuccess: (data) => NowPlayingSuccessState(data),
+      onSuccess: (data) => NowPlayingSuccessState(data.toEntities()),
       onError: (message) => NowPlayingErrorState(message),
     );
   }
@@ -23,7 +25,7 @@ class HomeCubit extends BaseCubit<HomeStates> {
     final result = await GetPopularUseCase.call();
     handleResult<MoviesResponseDto>(
       result,
-      onSuccess: (data) => PopularSuccessState(data),
+      onSuccess: (data) => PopularSuccessState(data.toEntities()),
       onError: (message) => PopularErrorState(message),
     );
   }
@@ -33,7 +35,7 @@ class HomeCubit extends BaseCubit<HomeStates> {
     final result = await GetTopRatedUseCase.call();
     handleResult<MoviesResponseDto>(
       result,
-      onSuccess: (data) => TopRatedSuccessState(data),
+      onSuccess: (data) => TopRatedSuccessState(data.toEntities()),
       onError: (message) => TopRatedErrorState(message),
     );
   }

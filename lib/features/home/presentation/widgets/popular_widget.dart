@@ -33,7 +33,7 @@ class PopularWidget extends BaseMovieSectionWidget {
             ),
           );
         } else if (state is PopularSuccessState) {
-          return buildSection(state.moviesResponseDto.results);
+          return buildSection(state.movies);
         } else {
           return buildShimmerLoading();
         }

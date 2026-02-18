@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Search', style: TextStyle(color: Colors.grey, fontSize: 24)),
+      child: Text(
+        'Details Screen',
+        style: TextStyle(color: Colors.grey, fontSize: 24),
+      ),
     );
   }
 }
