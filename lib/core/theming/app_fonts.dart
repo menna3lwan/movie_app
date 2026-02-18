@@ -43,4 +43,10 @@ abstract class AppFonts {
     fontSize: 14,
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle sectionTitle = TextStyle(
+    fontFamily: 'Poppins',
+    color: AppColors.textPrimary,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
 }
