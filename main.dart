@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/common/base/bloc_observer.dart';
+import 'app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = AppBlocObserver();
   runApp(const MovieApp());
-}
-
-class MovieApp extends StatelessWidget {
-  const MovieApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Movie App',
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Movie App')),
-        body: const Center(child: Text('Welcome to the Movie App!')),
-      ),
-    );
-  }
 }

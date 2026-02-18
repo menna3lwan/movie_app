@@ -8,8 +8,8 @@ abstract class AppTheme {
     brightness: Brightness.dark,
     useMaterial3: true,
     colorScheme: ColorScheme.dark(
-      primary: AppColors.primary,
-      secondary: AppColors.secondary,
+      primary: AppColors.secondary,
+      secondary: AppColors.accent,
       surface: AppColors.surface,
       error: AppColors.error,
     ),

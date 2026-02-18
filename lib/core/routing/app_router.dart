@@ -1,8 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_app/features/home/placeholders/details_page.dart';
+import 'package:movie_app/features/home/placeholders/search_page.dart';
+import '../../features/home/presentation/pages/home_page.dart';
+import '../common/widgets/main_scaffold.dart';
+import 'routes.dart';
 
-class AppRouter {}
+class AppRouter {
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  static final _shellNavigatorKey = GlobalKey<NavigatorState>();
+  static final GoRouter router = GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: AppRoutes.home.path,
+    routes: [
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) => MainScaffold(child: child),
+        routes: [
+          GoRoute(
+            path: AppRoutes.home.path,
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: HomePage()),
+          ),
+          GoRoute(
+            path: AppRoutes.search.path,
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: SearchPage()),
+          ),
+          GoRoute(
+            path: AppRoutes.watchList.path,
+            pageBuilder: (context, state) => const NoTransitionPage(
+              child: _PlaceholderPage(title: 'Watch List'),
+            ),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: AppRoutes.movieDetail.path,
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          int.parse(state.pathParameters['id']!);
+          return DetailsScreen(
+           
+          );
+        },
+      ),
+    ],
+  );
+}
 
-// ignore: unused_element
 class _PlaceholderPage extends StatelessWidget {
   final String title;
   const _PlaceholderPage({required this.title});
