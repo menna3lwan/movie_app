@@ -69,6 +69,11 @@ class WatchlistCubit extends Cubit<WatchlistState> {
 
     await _loadWatchlist();
   }
+
+  bool isMovieInWatchlist(int id) {
+    final movies = _getWatchlistUseCase();
+    return movies.any((e) => e.id == id);
+  }
 }
 
 sealed class WatchlistEvent {}

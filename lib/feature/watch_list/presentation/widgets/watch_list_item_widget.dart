@@ -39,6 +39,7 @@ class WatchListItem extends StatelessWidget {
                   child: Center(child: CircularProgressIndicator()),
                 ),
                 errorWidget: (_, __, ___) => Icon(Icons.error),
+                fadeOutDuration: const Duration(milliseconds: 50),
               ),
             ),
           ),

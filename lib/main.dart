@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:movie_app/core/common/widgets/custom_app_bar.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/di/service_locator.dart';
+import 'package:movie_app/feature/details/presentation/view/details_screen.dart';
 import 'package:movie_app/feature/watch_list/data/models/watch_list_model.dart';
-import 'package:movie_app/feature/watch_list/presentation/views/watch_list_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,13 +21,7 @@ class MovieApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Movie App',
-      home: Scaffold(
-          backgroundColor: AppColors.primary,
-          appBar: CustomAppBar(
-              isTrue: true,
-              leading: Icon(Icons.menu),
-              title: CommonStrings.watchList),
-          body: WatchListView()),
+      home: Scaffold(backgroundColor: AppColors.primary, body: DetailsScreen()),
     );
   }
 }
