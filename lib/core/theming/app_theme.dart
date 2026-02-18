@@ -7,12 +7,12 @@ abstract class AppTheme {
     brightness: Brightness.dark,
     useMaterial3: true,
     colorScheme: ColorScheme.dark(
-      primary: AppColors.secondary,
-      secondary: AppColors.accent,
+      primary: AppColors.accent,
+      secondary: AppColors.secondary,
       surface: AppColors.surface,
       error: AppColors.error,
     ),
-    scaffoldBackgroundColor: AppColors.background,
+    scaffoldBackgroundColor: AppColors.primary,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primary,
       elevation: 0,
@@ -20,13 +20,14 @@ abstract class AppTheme {
       titleTextStyle: AppFonts.appBarTitle,
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.primary,
-      selectedItemColor: AppColors.secondary,
+      backgroundColor: AppColors.background,
+      selectedItemColor: AppColors.primary,
       unselectedItemColor: AppColors.textSecondary,
       type: BottomNavigationBarType.fixed,
       selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
       unselectedLabelStyle: TextStyle(fontSize: 12),
     ),
+    fontFamily: "Poppins",
     textTheme: TextTheme(
       headlineLarge: AppFonts.headlineLarge,
       headlineMedium: AppFonts.headlineMedium,

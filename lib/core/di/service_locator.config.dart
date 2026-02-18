@@ -1,0 +1,74 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
+
+// **************************************************************************
+// InjectableConfigGenerator
+// **************************************************************************
+
+// ignore_for_file: type=lint
+// coverage:ignore-file
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:movie_app/features/details/data/details_api.dart' as _i443;
+import 'package:movie_app/features/details/data/repo/data_source/details_data_source_imp.dart'
+    as _i976;
+import 'package:movie_app/features/details/data/repo/data_source/similar_data_source_imp.dart'
+    as _i882;
+import 'package:movie_app/features/details/data/repo/repository/detais_repo_imp.dart'
+    as _i794;
+import 'package:movie_app/features/details/data/repo/repository/similar_repo_imp.dart'
+    as _i701;
+import 'package:movie_app/features/details/data/similar_api.dart' as _i290;
+import 'package:movie_app/features/details/domain/repo/data_source/details_data_source.dart'
+    as _i309;
+import 'package:movie_app/features/details/domain/repo/data_source/similar_data_source.dart'
+    as _i531;
+import 'package:movie_app/features/details/domain/repo/repository/details_repo.dart'
+    as _i554;
+import 'package:movie_app/features/details/domain/repo/repository/similar_repo.dart'
+    as _i230;
+import 'package:movie_app/features/details/domain/use_case/get_details_use_case.dart'
+    as _i314;
+import 'package:movie_app/features/details/domain/use_case/get_similar_use_case.dart'
+    as _i297;
+import 'package:movie_app/features/details/presentation/view_model/details_cubit.dart'
+    as _i171;
+
+extension GetItInjectableX on _i174.GetIt {
+  // initializes the registration of main-scope dependencies inside of GetIt
+  _i174.GetIt init({
+    String? environment,
+    _i526.EnvironmentFilter? environmentFilter,
+  }) {
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i443.DetailsApi>(() => _i443.DetailsApi());
+    gh.factory<_i290.SimilarApi>(() => _i290.SimilarApi());
+    gh.factory<_i531.SimilarDataSource>(
+      () => _i882.SimilarDataSourceImp(gh<_i290.SimilarApi>()),
+    );
+    gh.factory<_i309.DetailsDataSource>(
+      () => _i976.DetailsDataSourceImp(gh<_i443.DetailsApi>()),
+    );
+    gh.factory<_i554.DetailsRepo>(
+      () => _i794.DetaisRepoImp(gh<_i309.DetailsDataSource>()),
+    );
+    gh.factory<_i314.GetDetailsUseCase>(
+      () => _i314.GetDetailsUseCase(gh<_i554.DetailsRepo>()),
+    );
+    gh.factory<_i230.SimilarRepo>(
+      () => _i701.SimilarRepoImp(gh<_i531.SimilarDataSource>()),
+    );
+    gh.factory<_i297.GetSimilarUseCase>(
+      () => _i297.GetSimilarUseCase(gh<_i230.SimilarRepo>()),
+    );
+    gh.factory<_i171.DetailsCubit>(
+      () => _i171.DetailsCubit(
+        gh<_i314.GetDetailsUseCase>(),
+        gh<_i297.GetSimilarUseCase>(),
+      ),
+    );
+    return this;
+  }
+}
