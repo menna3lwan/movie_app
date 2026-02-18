@@ -34,12 +34,12 @@ abstract class AppFonts {
     fontWeight: FontWeight.normal,
   );
   static const TextStyle bodyMedium = TextStyle(
-    color: AppColors.textSecondary,
+    color: AppColors.textPrimary,
     fontSize: 14,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
   );
   static const TextStyle labelLarge = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColors.secondary,
     fontSize: 14,
     fontWeight: FontWeight.w600,
   );

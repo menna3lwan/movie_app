@@ -1,0 +1,26 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
+import 'package:movie_app/core/network/api_result.dart';
+import 'package:movie_app/core/network/api_urls.dart';
+import 'package:movie_app/features/details/data/details_dto.dart';
+
+@injectable
+class DetailsApi {
+   Future<ApiResult<DetailsDto>> getMovieDetails(int movieId) async {
+    try {
+      Uri url = Uri.https(ApiUrls.baseUrl, ApiUrls.getMovieDetails(movieId), {
+        "api_key": ApiUrls.apiKey,
+      });
+      var response = await http.get(url);
+      var responseString = response.body;
+      var json = jsonDecode(responseString);
+      DetailsDto detailsDto = DetailsDto.fromJson(json);
+      return ApiSuccess(detailsDto);
+    } catch (e) {
+      log(e.toString());
+      return ApiFailure(e.toString());
+    }
+  }
+}
