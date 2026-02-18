@@ -28,6 +28,8 @@ import 'package:movie_app/feature/watch_list/domain/usecases/get_watch_list_usec
     as _i876;
 import 'package:movie_app/feature/watch_list/domain/usecases/remove_from_watch_list_usecase.dart'
     as _i967;
+import 'package:movie_app/feature/watch_list/presentation/view_model/cubit/watch_list_cubit.dart'
+    as _i145;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -55,6 +57,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i876.GetWatchlistUseCase(gh<_i696.WatchlistRepo>()));
     gh.factory<_i967.RemoveFromWatchlistUseCase>(
         () => _i967.RemoveFromWatchlistUseCase(gh<_i696.WatchlistRepo>()));
+    gh.factory<_i145.WatchlistCubit>(() => _i145.WatchlistCubit(
+          gh<_i876.GetWatchlistUseCase>(),
+          gh<_i420.AddToWatchlistUseCase>(),
+          gh<_i967.RemoveFromWatchlistUseCase>(),
+        ));
     return this;
   }
 }
