@@ -4,6 +4,7 @@ abstract class CommonStrings {
   static const String home = 'Home';
   static const String search = 'Search';
   static const String watchList = 'Watch list';
+  static const String similar = 'Similar';
 
   static const String popular = 'Popular';
   static const String topRated = 'Top Rated';
@@ -24,4 +25,6 @@ abstract class CommonStrings {
   static const String action = 'Action';
   static const String minutes = 'Minutes';
   static const String notAvailable = 'N/A';
+  static const String noOverview = 'No overview yet';
+  static const String noMovie = 'There is no movie yet!';
 }

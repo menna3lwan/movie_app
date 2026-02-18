@@ -1,14 +1,20 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/network/api_result.dart';
 
-import 'base_state.dart';
+abstract class BaseCubit<State> extends Cubit<State> {
+  BaseCubit(super.initialState);
 
-abstract class BaseCubit<T> extends Cubit<BaseState<T>> {
-  BaseCubit() : super(const InitialState());
-
-  void emitLoading() => emit(const LoadingState());
-
-  void emitSuccess(T data) => emit(SuccessState(data));
-
-  void emitError(String message) => emit(ErrorState(message));
+  void handleResult<T>(
+    ApiResult<T> result, {
+    required State Function(T data) onSuccess,
+    required State Function(String message) onError,
+  }) {
+    if (isClosed) return;
+    switch (result) {
+      case ApiSuccess<T>():
+        emit(onSuccess(result.data));
+      case ApiFailure<T>():
+        emit(onError(result.message));
+    }
+  }
 }

@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../constants/app_assets.dart';
 import '../../constants/app_colors.dart';
 import '../../constants/common_strings.dart';
 import '../../routing/routes.dart';
@@ -10,6 +11,7 @@ class MainScaffold extends StatelessWidget {
   final Widget child;
 
   const MainScaffold({super.key, required this.child});
+
   int _currentIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.path;
     if (location.startsWith(AppRoutes.home.path)) return 0;
@@ -38,20 +40,59 @@ class MainScaffold extends StatelessWidget {
         child: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (index) => _onTap(context, index),
-          items: const [
+          selectedItemColor: AppColors.secondary,
+          unselectedItemColor: AppColors.textSecondary,
+          backgroundColor: AppColors.primary,
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home),
+              icon: SvgPicture.asset(
+                AppAssets.iconHome,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.textSecondary,
+                  BlendMode.srcIn,
+                ),
+              ),
+              activeIcon: SvgPicture.asset(
+                AppAssets.iconHome,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.secondary,
+                  BlendMode.srcIn,
+                ),
+              ),
               label: CommonStrings.home,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              activeIcon: Icon(Icons.search),
+              icon: SvgPicture.asset(
+                AppAssets.iconSearch,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.textSecondary,
+                  BlendMode.srcIn,
+                ),
+              ),
+              activeIcon: SvgPicture.asset(
+                AppAssets.iconSearch,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.secondary,
+                  BlendMode.srcIn,
+                ),
+              ),
               label: CommonStrings.search,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark_outline),
-              activeIcon: Icon(Icons.bookmark),
+              icon: SvgPicture.asset(
+                AppAssets.iconBookmark,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.textSecondary,
+                  BlendMode.srcIn,
+                ),
+              ),
+              activeIcon: SvgPicture.asset(
+                AppAssets.iconBookmark,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.secondary,
+                  BlendMode.srcIn,
+                ),
+              ),
               label: CommonStrings.watchList,
             ),
           ],

@@ -4,11 +4,12 @@ import 'app_fonts.dart';
 
 abstract class AppTheme {
   static ThemeData get darkTheme => ThemeData(
+    fontFamily: 'Poppins',
     brightness: Brightness.dark,
     useMaterial3: true,
     colorScheme: ColorScheme.dark(
-      primary: AppColors.secondary,
-      secondary: AppColors.accent,
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
       surface: AppColors.surface,
       error: AppColors.error,
     ),
