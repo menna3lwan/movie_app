@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app/core/common/widgets/custom_app_bar.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
@@ -26,7 +25,10 @@ class MovieApp extends StatelessWidget {
       title: 'Movie App',
       home: Scaffold(
           backgroundColor: AppColors.primary,
-          appBar: CustomAppBar(title: CommonStrings.watchList),
+          appBar: CustomAppBar(
+              isTrue: true,
+              leading: Icon(Icons.menu),
+              title: CommonStrings.watchList),
           body: WatchListView()),
     );
   }

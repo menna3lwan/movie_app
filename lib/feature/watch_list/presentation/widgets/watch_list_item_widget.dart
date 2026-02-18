@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/theming/app_fonts.dart';
 import 'package:movie_app/feature/watch_list/domain/entity/watch_list_entity.dart';
+import 'package:movie_app/feature/watch_list/presentation/widgets/info_row_widget.dart';
 
 class WatchListItem extends StatelessWidget {
   const WatchListItem({super.key, required this.movie});
@@ -14,6 +14,7 @@ class WatchListItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: 95,
@@ -53,55 +54,26 @@ class WatchListItem extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 14),
-                Row(
-                  children: [
-                    SvgPicture.asset(AppAssets.star),
-                    const SizedBox(width: 4),
-                    Text(
-                      movie.voteAverage.toString(),
-                      style: AppFonts.titleMedium
-                          .copyWith(color: AppColors.star, fontSize: 12),
-                    ),
-                  ],
+                InfoRowWidget(
+                  icon: AppAssets.star,
+                  text: movie.voteAverage.toString(),
+                  color: AppColors.star,
                 ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      AppAssets.ticket,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
+                const SizedBox(height: 5),
+                InfoRowWidget(
+                  icon: AppAssets.ticket,
+                  text:
                       movie.genres.isNotEmpty ? movie.genres.first : "Unknown",
-                      style: AppFonts.bodyMedium
-                          .copyWith(color: AppColors.offwhite, fontSize: 12),
-                    ),
-                  ],
                 ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      AppAssets.calendarBlank,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      movie.releaseDate.substring(0, 4),
-                      style: AppFonts.bodyMedium
-                          .copyWith(color: AppColors.offwhite, fontSize: 12),
-                    ),
-                  ],
+                const SizedBox(height: 5),
+                InfoRowWidget(
+                  icon: AppAssets.calendarBlank,
+                  text: movie.releaseDate.substring(0, 4),
                 ),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      AppAssets.clock,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      "${movie.runtime} minutes",
-                      style: AppFonts.bodyMedium
-                          .copyWith(color: AppColors.offwhite, fontSize: 12),
-                    ),
-                  ],
+                const SizedBox(height: 5),
+                InfoRowWidget(
+                  icon: AppAssets.clock,
+                  text: "${movie.runtime} minutes",
                 ),
               ],
             ),
