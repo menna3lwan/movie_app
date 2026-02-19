@@ -7,11 +7,10 @@ abstract class CommonStrings {
   static const String noMovie = 'There is no movie yet!';
   static const String similar = 'Similar';
 
-  static const String popular = 'Popular';
+  static const String popularMovies = 'Popular ';
   static const String topRated = 'Top Rated';
-  static const String upcoming = 'Upcoming';
-  static const String nowPlaying = 'Now Playing';
-  static const String searchHint = 'Search movies...';
+  static const String releasesMovies = 'Releases ';
+  static const String searchHint = 'Search ';
   static const String noResultsTitle =
       'We Are Sorry, We Can Not Find The Movie :(';
   static const String noResultsSubtitle =

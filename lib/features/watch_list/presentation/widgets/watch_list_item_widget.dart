@@ -23,9 +23,9 @@ class WatchListItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.4),
+                  color: Colors.black.withValues(alpha: 0.4),
                   blurRadius: 10,
-                  offset: Offset(0, 6),
+                  offset: const Offset(0, 6),
                 ),
               ],
             ),
@@ -34,11 +34,11 @@ class WatchListItem extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: movie.posterPath,
                 fit: BoxFit.cover,
-                placeholder: (_, __) => Container(
+                placeholder: (_, _2) => Container(
                   color: AppColors.grey,
-                  child: Center(child: CircularProgressIndicator()),
+                  child: const Center(child: CircularProgressIndicator()),
                 ),
-                errorWidget: (_, __, ___) => Icon(Icons.error),
+                errorWidget: (_, _2, _3) => const Icon(Icons.error),
                 fadeOutDuration: const Duration(milliseconds: 50),
               ),
             ),

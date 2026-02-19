@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/common/widgets/app_error_widget.dart';
 import 'package:movie_app/core/common/widgets/custom_app_bar.dart';

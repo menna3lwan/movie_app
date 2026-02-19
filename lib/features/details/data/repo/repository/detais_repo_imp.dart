@@ -6,7 +6,7 @@ import 'package:movie_app/features/details/domain/repo/repository/details_repo.d
 @Injectable(as:DetailsRepo)
 class DetaisRepoImp implements DetailsRepo{
   DetaisRepoImp(this._detailsDataSource);
-  DetailsDataSource _detailsDataSource;
+  final DetailsDataSource _detailsDataSource;
   @override
   Future<ApiResult<DetailsEntity>> getMovieDetails(int movieId) => _detailsDataSource.getMovieDetails(movieId);
 }

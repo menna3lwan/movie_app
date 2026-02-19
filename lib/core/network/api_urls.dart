@@ -10,7 +10,7 @@ class ApiUrls {
   }
 
   // Home endpoints
-  static const String nowPlayingEndpoint = "/3/movie/now_playing";
+  static const String releasesEndpoint = "/3/movie/now_playing";
   static const String popularEndpoint = "/3/movie/popular";
   static const String topRatedEndpoint = "/3/movie/top_rated";
 

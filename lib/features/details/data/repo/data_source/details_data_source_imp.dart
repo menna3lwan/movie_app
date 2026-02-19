@@ -7,7 +7,7 @@ import 'package:movie_app/features/details/domain/repo/data_source/details_data_
 @Injectable(as: DetailsDataSource)
 class DetailsDataSourceImp implements DetailsDataSource {
   DetailsDataSourceImp(this._detailsApi);
-  DetailsApi _detailsApi;
+  final DetailsApi _detailsApi;
   @override
   Future<ApiResult<DetailsEntity>> getMovieDetails(int movieId) async {
     final result = await _detailsApi.getMovieDetails(movieId);

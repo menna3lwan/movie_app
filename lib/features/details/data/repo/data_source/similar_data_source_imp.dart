@@ -7,7 +7,7 @@ import 'package:movie_app/features/details/domain/repo/data_source/similar_data_
 @Injectable(as: SimilarDataSource)
 class SimilarDataSourceImp implements SimilarDataSource {
   SimilarDataSourceImp(this._similarApi);
-  SimilarApi _similarApi;
+  final SimilarApi _similarApi;
   
   @override
   Future<ApiResult<SimilarEntity>> getMovieSimilars(int movieId) async {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
 
 import '../../constants/app_colors.dart';
+import '../../theming/app_fonts.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

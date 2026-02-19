@@ -6,7 +6,7 @@ import 'package:movie_app/features/details/domain/repo/repository/similar_repo.d
 @Injectable(as: SimilarRepo)
 class SimilarRepoImp implements SimilarRepo{
   SimilarRepoImp(this._similarDataSource);
-  SimilarDataSource _similarDataSource;
+  final SimilarDataSource _similarDataSource;
   @override
   Future<ApiResult<SimilarEntity>> getMovieSimilars(int movieId) => _similarDataSource.getMovieSimilars(movieId);
 }

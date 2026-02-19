@@ -57,7 +57,7 @@ class MovieCoverWidget extends StatelessWidget {
                         SvgPicture.asset(AppAssets.star),
                         const SizedBox(width: 5),
                         Text(
-                          "${detailsState.detailsEntity.voteAverage.toStringAsPrecision(2)}",
+                          detailsState.detailsEntity.voteAverage.toStringAsPrecision(2),
                           style: AppFonts.labelLarge,
                         ),
                       ],

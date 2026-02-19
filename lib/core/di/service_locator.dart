@@ -1,11 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app/core/di/service_locator.config.dart';
-
-
-  
+import 'service_locator.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit()
+@InjectableInit(
+  initializerName: 'init',
+  preferRelativeImports: true,
+  asExtension: true,
+)
 Future<void> configureDependencies() async => await getIt.init();

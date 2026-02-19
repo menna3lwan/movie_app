@@ -17,7 +17,10 @@ class InfoTag extends StatelessWidget {
             imageUrl,
             width: 16,
             height: 16,
-            color: AppColors.grey,
+            colorFilter: const ColorFilter.mode(
+              AppColors.grey,
+              BlendMode.srcIn,
+            ),
           ),
           const SizedBox(width: 5),
           Text(

@@ -15,116 +15,117 @@ class SearchItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = movie.posterPath != null
+    final imageUrl = movie.posterPath.isNotEmpty
         ? '${ApiUrls.prefixImageUrl}${movie.posterPath}'
         : AppAssets.dummyImage;
 
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => DetailsScreen(
-                  movieDetailsId: movie.id,
-                  movieSimilarsId: movie.id,
-            )));
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailsScreen(
+                      movieDetailsId: movie.id,
+                      movieSimilarsId: movie.id,
+                    )));
       },
-      child: Container(
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: CachedNetworkImage(
-                fadeOutDuration: const Duration(milliseconds: 50),
-                imageUrl: imageUrl,
-                width: 110,
-                height: 160,
-                fit: BoxFit.cover,
-                placeholder: (context, url) => Container(
-                  color: AppColors.grey,
-                  child: Center(child: CircularProgressIndicator()),
-                ),
-                errorWidget: (_, __, ___) => _buildPlaceholder(),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: CachedNetworkImage(
+              fadeOutDuration: const Duration(milliseconds: 50),
+              imageUrl: imageUrl,
+              width: 110,
+              height: 160,
+              fit: BoxFit.cover,
+              placeholder: (_, _2) => Container(
+                color: AppColors.grey,
+                child: const Center(child: CircularProgressIndicator()),
+              ),
+              errorWidget: (_, _2, _3) => _buildPlaceholder(),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    movie.title,
+                    style: AppFonts.titleMedium,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 14),
+                  Row(
+                    children: [
+                      const Icon(Icons.star, color: AppColors.star, size: 16),
+                      const SizedBox(width: 4),
+                      Text(
+                        movie.voteAverage.toStringAsFixed(1),
+                        style: AppFonts.bodyMedium,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.language,
+                        color: AppColors.textPrimary,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        movie.originalLanguage,
+                        style: AppFonts.bodyMedium,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.calendar_today,
+                        color: AppColors.textPrimary,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        movie.releaseDate.isNotEmpty
+                            ? movie.releaseDate.split('-')[0]
+                            : CommonStrings.notAvailable,
+                        style: AppFonts.bodyMedium,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.description,
+                        color: AppColors.textPrimary,
+                        size: 16,
+                      ),
+                      const SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          movie.overview,
+                          style: AppFonts.bodyMedium,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.title,
-                      style: AppFonts.titleMedium,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 14),
-                    Row(
-                      children: [
-                        const Icon(Icons.star, color: AppColors.star, size: 16),
-                        const SizedBox(width: 4),
-                        Text(
-                          movie.voteAverage.toStringAsFixed(1),
-                          style: AppFonts.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.language,
-                          color: AppColors.textPrimary,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          movie.originalLanguage,
-                          style: AppFonts.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.calendar_today,
-                          color: AppColors.textPrimary,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          movie.releaseDate?.split('-')[0] ??
-                              CommonStrings.notAvailable,
-                          style: AppFonts.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.description,
-                          color: AppColors.textPrimary,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            movie.overview,
-                            style: AppFonts.bodyMedium,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
