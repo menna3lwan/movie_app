@@ -1,5 +1,5 @@
 
-import 'package:movie_app/core/constants/common_strings.dart';
+import '../../../../core/constants/common_strings.dart';
 
 class DetailsEntity {
   final bool adult;

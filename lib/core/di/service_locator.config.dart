@@ -1,5 +1,4 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -31,44 +30,6 @@ import 'package:movie_app/feature/watch_list/domain/usecases/remove_from_watch_l
     as _i967;
 import 'package:movie_app/feature/watch_list/presentation/view_model/cubit/watch_list_cubit.dart'
     as _i145;
-
-extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
-  Future<_i174.GetIt> init({
-    String? environment,
-    _i526.EnvironmentFilter? environmentFilter,
-  }) async {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
-    final hiveModule = _$HiveModule();
-    await gh.factoryAsync<_i979.Box<_i81.WatchlistMovieModel>>(
-      () => hiveModule.getWatchlistBox(),
-      preResolve: true,
-    );
-    gh.factory<_i1000.WatchlistDataSource>(() => _i314.WatchlistDataSourceImpl(
-        gh<_i979.Box<_i81.WatchlistMovieModel>>()));
-    gh.factory<_i696.WatchlistRepo>(
-        () => _i488.WatchlistRepoImpl(gh<_i1000.WatchlistDataSource>()));
-    gh.factory<_i420.AddToWatchlistUseCase>(
-        () => _i420.AddToWatchlistUseCase(gh<_i696.WatchlistRepo>()));
-    gh.factory<_i876.GetWatchlistUseCase>(
-        () => _i876.GetWatchlistUseCase(gh<_i696.WatchlistRepo>()));
-    gh.factory<_i967.RemoveFromWatchlistUseCase>(
-        () => _i967.RemoveFromWatchlistUseCase(gh<_i696.WatchlistRepo>()));
-    gh.factory<_i145.WatchlistCubit>(() => _i145.WatchlistCubit(
-          gh<_i876.GetWatchlistUseCase>(),
-          gh<_i420.AddToWatchlistUseCase>(),
-          gh<_i967.RemoveFromWatchlistUseCase>(),
-        ));
-    return this;
-  }
-}
-
-class _$HiveModule extends _i359.HiveModule {}
-import 'package:injectable/injectable.dart' as _i526;
 import 'package:movie_app/features/details/data/details_api.dart' as _i443;
 import 'package:movie_app/features/details/data/repo/data_source/details_data_source_imp.dart'
     as _i976;
@@ -93,40 +54,81 @@ import 'package:movie_app/features/details/domain/use_case/get_similar_use_case.
     as _i297;
 import 'package:movie_app/features/details/presentation/view_model/details_cubit.dart'
     as _i171;
+import 'package:movie_app/search_feature/search/data/repositories/search_data_source_impl/search_remote_datasource_imp.dart'
+    as _i47;
+import 'package:movie_app/search_feature/search/data/repositories/search_repo_impl/search_repo_impl.dart'
+    as _i179;
+import 'package:movie_app/search_feature/search/data/SearchApi/search_api.dart'
+    as _i241;
+import 'package:movie_app/search_feature/search/domain/repositories/datasource/search_remote_datasource.dart'
+    as _i312;
+import 'package:movie_app/search_feature/search/domain/repositories/repo/search_repo.dart'
+    as _i900;
+import 'package:movie_app/search_feature/search/domain/usecases/search_movies_usecase.dart'
+    as _i716;
+import 'package:movie_app/search_feature/search/presentation/view_model/search_cubit.dart'
+    as _i156;
 
 extension GetItInjectableX on _i174.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
+// initializes the registration of main-scope dependencies inside of GetIt
+  Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
-  }) {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+  }) async {
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
+    final hiveModule = _$HiveModule();
+    await gh.factoryAsync<_i979.Box<_i81.WatchlistMovieModel>>(
+      () => hiveModule.getWatchlistBox(),
+      preResolve: true,
+    );
     gh.factory<_i443.DetailsApi>(() => _i443.DetailsApi());
     gh.factory<_i290.SimilarApi>(() => _i290.SimilarApi());
-    gh.factory<_i531.SimilarDataSource>(
-      () => _i882.SimilarDataSourceImp(gh<_i290.SimilarApi>()),
-    );
+    gh.factory<_i241.SearchApi>(() => _i241.SearchApi());
     gh.factory<_i309.DetailsDataSource>(
-      () => _i976.DetailsDataSourceImp(gh<_i443.DetailsApi>()),
-    );
+        () => _i976.DetailsDataSourceImp(gh<_i443.DetailsApi>()));
+    gh.factory<_i312.SearchRemoteDataSource>(
+        () => _i47.SearchRemoteDataSourceImpl(gh<_i241.SearchApi>()));
+    gh.factory<_i900.SearchRepo>(
+        () => _i179.SearchRepoImpl(gh<_i312.SearchRemoteDataSource>()));
+    gh.factory<_i716.GetSearchMoviesUseCase>(
+        () => _i716.GetSearchMoviesUseCase(gh<_i900.SearchRepo>()));
+    gh.factory<_i531.SimilarDataSource>(
+        () => _i882.SimilarDataSourceImp(gh<_i290.SimilarApi>()));
+    gh.factory<_i1000.WatchlistDataSource>(() => _i314.WatchlistDataSourceImpl(
+        gh<_i979.Box<_i81.WatchlistMovieModel>>()));
     gh.factory<_i554.DetailsRepo>(
-      () => _i794.DetaisRepoImp(gh<_i309.DetailsDataSource>()),
-    );
-    gh.factory<_i314.GetDetailsUseCase>(
-      () => _i314.GetDetailsUseCase(gh<_i554.DetailsRepo>()),
-    );
+        () => _i794.DetaisRepoImp(gh<_i309.DetailsDataSource>()));
+    gh.factory<_i156.SearchCubit>(
+        () => _i156.SearchCubit(gh<_i716.GetSearchMoviesUseCase>()));
+    gh.factory<_i696.WatchlistRepo>(
+        () => _i488.WatchlistRepoImpl(gh<_i1000.WatchlistDataSource>()));
+    gh.factory<_i420.AddToWatchlistUseCase>(
+        () => _i420.AddToWatchlistUseCase(gh<_i696.WatchlistRepo>()));
+    gh.factory<_i876.GetWatchlistUseCase>(
+        () => _i876.GetWatchlistUseCase(gh<_i696.WatchlistRepo>()));
+    gh.factory<_i967.RemoveFromWatchlistUseCase>(
+        () => _i967.RemoveFromWatchlistUseCase(gh<_i696.WatchlistRepo>()));
     gh.factory<_i230.SimilarRepo>(
-      () => _i701.SimilarRepoImp(gh<_i531.SimilarDataSource>()),
-    );
+        () => _i701.SimilarRepoImp(gh<_i531.SimilarDataSource>()));
+    gh.factory<_i314.GetDetailsUseCase>(
+        () => _i314.GetDetailsUseCase(gh<_i554.DetailsRepo>()));
+    gh.factory<_i145.WatchlistCubit>(() => _i145.WatchlistCubit(
+          gh<_i876.GetWatchlistUseCase>(),
+          gh<_i420.AddToWatchlistUseCase>(),
+          gh<_i967.RemoveFromWatchlistUseCase>(),
+        ));
     gh.factory<_i297.GetSimilarUseCase>(
-      () => _i297.GetSimilarUseCase(gh<_i230.SimilarRepo>()),
-    );
-    gh.factory<_i171.DetailsCubit>(
-      () => _i171.DetailsCubit(
-        gh<_i314.GetDetailsUseCase>(),
-        gh<_i297.GetSimilarUseCase>(),
-      ),
-    );
+        () => _i297.GetSimilarUseCase(gh<_i230.SimilarRepo>()));
+    gh.factory<_i171.DetailsCubit>(() => _i171.DetailsCubit(
+          gh<_i314.GetDetailsUseCase>(),
+          gh<_i297.GetSimilarUseCase>(),
+        ));
     return this;
   }
 }
+
+class _$HiveModule extends _i359.HiveModule {}

@@ -1,6 +1,7 @@
 class ApiUrls {
   static const String baseUrl = "api.themoviedb.org";
   static const String apiKey = "9d7f94be913eddf2db40e317d2f12f36";
+  static const String searchMoviesEndpoint = "/3/search/movie";
   static String getMovieDetails(int movieId) {
     return "/3/movie/$movieId";
   }

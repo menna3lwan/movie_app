@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/constants/common_strings.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
-import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
-import 'package:movie_app/features/details/presentation/widgets/info_tag.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/common_strings.dart';
+import '../../../../core/theming/app_fonts.dart';
+import '../../../../features/details/presentation/view_model/details_states.dart';
+import '../../../../features/details/presentation/widgets/info_tag.dart';
 
 class DescribtionWidget extends StatelessWidget {
   const DescribtionWidget({
@@ -27,23 +27,20 @@ class DescribtionWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InfoTag(
-                    imageUrl: AppAssets.imgCalender,
+                    imageUrl: AppAssets.calendarBlank,
                     label: detailsState.detailsEntity.releaseDate,
                   ),
                   const VerticalDivider(color: AppColors.grey),
                   InfoTag(
-                    imageUrl: AppAssets.imgClock,
-                    label: detailsState.detailsEntity.runtime
-                        .toString(),
+                    imageUrl: AppAssets.clock,
+                    label: detailsState.detailsEntity.runtime.toString(),
                   ),
                   const VerticalDivider(color: AppColors.grey),
                   InfoTag(
-                    imageUrl: AppAssets.imgTicket,
-                    label: detailsState
-                        .detailsEntity
-                        .genres
-                        .first
-                        .name,
+                    imageUrl: AppAssets.ticket,
+                    label: detailsState.detailsEntity.genres.isEmpty
+                        ? CommonStrings.action
+                        : detailsState.detailsEntity.genres.first.name,
                   ),
                 ],
               ),

@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:http/http.dart' as http;
+
+import '../../../core/network/api_result.dart';
+import '../../../core/network/api_urls.dart';
+import '../../../features/details/data/details_dto.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app/core/network/api_result.dart';
-import 'package:movie_app/core/network/api_urls.dart';
-import 'package:movie_app/features/details/data/details_dto.dart';
 
 @injectable
 class DetailsApi {
