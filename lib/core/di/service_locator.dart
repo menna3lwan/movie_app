@@ -3,6 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:movie_app/core/di/service_locator.config.dart';
 
 
+  
+
 final getIt = GetIt.instance;
 
 @InjectableInit()

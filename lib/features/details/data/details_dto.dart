@@ -1,5 +1,5 @@
 
-import '../../../features/details/domain/entity/details_entity.dart';
+import 'package:movie_app/features/details/domain/entity/details_entity.dart';
 
 class DetailsDto {
   final bool adult;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/constants/app_assets.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/network/api_urls.dart';
-import '../../../../core/theming/app_fonts.dart';
-import '../../../../features/details/presentation/view_model/details_states.dart';
+import 'package:movie_app/core/constants/app_assets.dart';
+import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/core/network/api_urls.dart';
+import 'package:movie_app/core/theming/app_fonts.dart';
+import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 
 class MovieCoverWidget extends StatelessWidget {
   const MovieCoverWidget({super.key, required this.detailsState});

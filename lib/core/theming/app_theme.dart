@@ -29,14 +29,6 @@ abstract class AppTheme {
           unselectedLabelStyle: TextStyle(fontSize: 12),
         ),
         fontFamily: "Poppins",
-        textTheme: TextTheme(
-          headlineLarge: AppFonts.headlineLarge,
-          headlineMedium: AppFonts.headlineMedium,
-          titleLarge: AppFonts.titleLarge,
-          titleMedium: AppFonts.titleMedium,
-          bodyLarge: AppFonts.bodyLarge,
-          bodyMedium: AppFonts.bodyMedium,
-          labelLarge: AppFonts.labelLarge,
-        ),
+
       );
 }

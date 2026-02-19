@@ -1,4 +1,3 @@
-
 import 'package:movie_app/features/details/domain/entity/details_entity.dart';
 import 'package:movie_app/features/details/domain/entity/similar_entity.dart';
 

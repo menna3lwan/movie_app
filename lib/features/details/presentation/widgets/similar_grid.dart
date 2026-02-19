@@ -1,9 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/common/widgets/empty_state_widget.dart';
+import 'package:movie_app/core/constants/app_assets.dart';
+import 'package:movie_app/core/network/api_urls.dart';
 import 'package:movie_app/features/details/presentation/view/details_screen.dart';
-import '../../../../core/common/widgets/empty_state_widget.dart';
-import '../../../../core/constants/app_assets.dart';
-import '../../../../core/network/api_urls.dart';
-import '../../../../features/details/presentation/view_model/details_states.dart';
+import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 
 class SimilarGrid extends StatelessWidget {
   const SimilarGrid({
@@ -50,8 +51,8 @@ class SimilarGrid extends StatelessWidget {
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        similarState
+                      child: CachedNetworkImage(
+                        imageUrl: similarState
                                 .similarEntity.results[index].posterPath.isEmpty
                             ? AppAssets.dummyImage
                             : '${ApiUrls.prefixImageUrl}${similarState.similarEntity.results[index].posterPath}',

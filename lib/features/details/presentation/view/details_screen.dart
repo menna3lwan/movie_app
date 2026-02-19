@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/common/widgets/shimmer_loading_widget.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/di/service_locator.dart';
+
 import 'package:movie_app/features/details/presentation/view_model/details_cubit.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 import 'package:movie_app/features/details/presentation/widgets/describtion_widget.dart';
+
 import 'package:movie_app/features/details/presentation/widgets/movie_cover_widget.dart';
 import 'package:movie_app/features/details/presentation/widgets/my_sliver_persistent_header.dart';
 import 'package:movie_app/features/details/presentation/widgets/similar_grid.dart';
+import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watch_list_cubit.dart';
 
 class DetailsScreen extends StatefulWidget {
   final int movieDetailsId;
@@ -25,6 +28,7 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   late DetailsCubit cubit;
+  late WatchlistCubit watchlistCubit;
 
   @override
   void initState() {
@@ -32,6 +36,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     cubit = getIt<DetailsCubit>()
       ..intent(GetSimilarIntent(widget.movieSimilarsId))
       ..intent(GetDetailsIntent(widget.movieDetailsId));
+    watchlistCubit = getIt<WatchlistCubit>();
   }
 
   @override
@@ -44,7 +49,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPersistentHeader(
-              delegate: MySliverPersistentHeader(),
+              delegate: MySliverPersistentHeader(
+                cubit: cubit,
+                watchlistCubit: watchlistCubit,
+              ),
               pinned: true,
             ),
             BlocBuilder<DetailsCubit, DetailsStates>(
@@ -60,7 +68,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return MovieCoverWidget(detailsState: detailsState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: ShimmerLoadingWidget()),
+                    child: Center(child: MovieRowSkeleton()),
                   );
                 }
               },
@@ -83,7 +91,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return DescribtionWidget(detailsState: detailsState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: ShimmerLoadingWidget()),
+                    child: Center(child: ShimmerGridLoadingWidget()),
                   );
                 }
               },
@@ -106,7 +114,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return SimilarGrid(similarState: similarState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: ShimmerLoadingWidget()),
+                    child: Center(child: ShimmerGridLoadingWidget()),
                   );
                 }
               },
