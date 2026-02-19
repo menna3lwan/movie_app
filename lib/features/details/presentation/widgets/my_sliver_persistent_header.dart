@@ -34,7 +34,6 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
               final detailsState = cubit.state;
 
               bool isSaved = false;
-              WatchlistMovieEntity? movie;
 
               if (detailsState is CombinedDetailsState &&
                   detailsState.detailsState is DetailsSuccessState) {
@@ -44,32 +43,38 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
                 final movieId = details.detailsEntity.id;
 
                 isSaved = watchlistCubit.isMovieInWatchlist(movieId);
-
-                movie = WatchlistMovieEntity(
-                  id: details.detailsEntity.id,
-                  title: details.detailsEntity.title,
-                  posterPath:
-                      ApiUrls.prefixImageUrl + details.detailsEntity.posterPath,
-                  voteAverage: details.detailsEntity.voteAverage,
-                  releaseDate: details.detailsEntity.releaseDate,
-                  genres:
-                      details.detailsEntity.genres.map((g) => g.name).toList(),
-                  runtime: details.detailsEntity.runtime,
-                );
               }
 
               return IconButton(
-                icon: isSaved
-                    ? SvgPicture.asset(
-                        AppAssets.YellowBookMark,
-                      )
-                    : SvgPicture.asset(AppAssets.bookMark),
-                onPressed: movie == null
-                    ? null
-                    : () {
-                        watchlistCubit.intent(ToggleWatchlistEvent(movie!));
-                      },
-              );
+                  icon: isSaved
+                      ? SvgPicture.asset(
+                          AppAssets.YellowBookMark,
+                        )
+                      : SvgPicture.asset(AppAssets.bookMark),
+                  onPressed: () {
+                    final detailsState = cubit.state;
+
+                    if (detailsState is CombinedDetailsState &&
+                        detailsState.detailsState is DetailsSuccessState) {
+                      final details =
+                          detailsState.detailsState as DetailsSuccessState;
+
+                      final movie = WatchlistMovieEntity(
+                        id: details.detailsEntity.id,
+                        title: details.detailsEntity.title,
+                        posterPath: ApiUrls.prefixImageUrl +
+                            details.detailsEntity.posterPath,
+                        voteAverage: details.detailsEntity.voteAverage,
+                        releaseDate: details.detailsEntity.releaseDate,
+                        genres: details.detailsEntity.genres
+                            .map((g) => g.name)
+                            .toList(),
+                        runtime: details.detailsEntity.runtime,
+                      );
+
+                      watchlistCubit.intent(ToggleWatchlistEvent(movie));
+                    }
+                  });
             }),
       ],
     );
