@@ -7,8 +7,12 @@ abstract class AppAssets {
   static const String clock = 'assets/icons/Clock.svg';
   static const String star = 'assets/icons/Star.svg';
   static const String ticket = 'assets/icons/Ticket.svg';
-
-  static const String imgFolder = 'assets/images/folder (1) 1.png';
+  static const String bookMark = 'assets/icons/Bookmark.svg';
+  static const String YellowBookMark = 'assets/icons/icons8-bookmark.svg';
+  static const String imgFolder = 'assets/images/folder.png';
   static const String imgNoResults = 'assets/images/no-results 1.png';
   static const String imgPopcorn = 'assets/images/popcorn 1.png';
+  static const String imgSearch = 'assets/images/search 1.png';
+  static const String dummyImage =
+      'https://www.mountainmotorvehicles.co.uk/wp-content/uploads/2024/05/No-image-available-2-300x300.jpg';
 }
