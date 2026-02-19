@@ -7,7 +7,8 @@ abstract class AppAssets {
   static const String clock = 'assets/icons/Clock.svg';
   static const String star = 'assets/icons/Star.svg';
   static const String ticket = 'assets/icons/Ticket.svg';
-
+  static const String bookMark = 'assets/icons/Bookmark.svg';
+  static const String YellowBookMark = 'assets/icons/icons8-bookmark.svg';
   static const String imgFolder = 'assets/images/folder.png';
   static const String imgNoResults = 'assets/images/no-results 1.png';
   static const String imgPopcorn = 'assets/images/popcorn 1.png';
