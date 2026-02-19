@@ -6,7 +6,6 @@ import 'package:movie_app/core/di/service_locator.dart';
 import 'package:movie_app/features/search/presentation/views/search_page.dart';
 import 'package:movie_app/features/watch_list/data/models/watch_list_model.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();

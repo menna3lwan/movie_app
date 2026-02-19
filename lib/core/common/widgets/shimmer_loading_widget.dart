@@ -269,3 +269,156 @@ class MovieRowSkeleton extends StatelessWidget {
     );
   }
 }
+
+class MovieCoverSkeleton extends StatelessWidget {
+  const MovieCoverSkeleton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Skeletonizer(
+      enabled: true,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadiusDirectional.only(
+                  bottomEnd: Radius.circular(16),
+                  bottomStart: Radius.circular(16),
+                ),
+                child: Container(
+                  height: 280,
+                  width: double.infinity,
+                  color: AppColors.surface,
+                ),
+              ),
+              Positioned(
+                bottom: 16,
+                right: 16,
+                child: Container(
+                  width: 60,
+                  height: 24,
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 30),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        width: 110,
+                        height: 165,
+                        color: AppColors.surface,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 20,
+                              width: double.infinity,
+                              color: AppColors.surface,
+                            ),
+                            const SizedBox(height: 8),
+                            Container(
+                              height: 20,
+                              width: 150,
+                              color: AppColors.surface,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DescriptionSkeleton extends StatelessWidget {
+  const DescriptionSkeleton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Skeletonizer(
+        enabled: true,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _tagSkeleton(),
+                  const SizedBox(width: 12),
+                  const VerticalDivider(color: AppColors.grey),
+                  const SizedBox(width: 12),
+                  _tagSkeleton(),
+                  const SizedBox(width: 12),
+                  const VerticalDivider(color: AppColors.grey),
+                  const SizedBox(width: 12),
+                  _tagSkeleton(),
+                ],
+              ),
+              const SizedBox(height: 25),
+              _line(width: double.infinity),
+              const SizedBox(height: 8),
+              _line(width: double.infinity),
+              const SizedBox(height: 8),
+              _line(width: MediaQuery.of(context).size.width * 0.6),
+              const SizedBox(height: 30),
+              _line(width: 80, height: 16),
+              const SizedBox(height: 15),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _tagSkeleton() {
+    return Container(
+      width: 90,
+      height: 24,
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(20),
+      ),
+    );
+  }
+
+  Widget _line({required double width, double height = 14}) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(6),
+      ),
+    );
+  }
+}

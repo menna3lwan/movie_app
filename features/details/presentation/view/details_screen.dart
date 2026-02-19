@@ -68,7 +68,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return MovieCoverWidget(detailsState: detailsState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: MovieRowSkeleton()),
+                    child: Center(child: MovieCoverSkeleton()),
                   );
                 }
               },
