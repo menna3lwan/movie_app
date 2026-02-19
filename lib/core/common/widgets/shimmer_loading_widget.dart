@@ -45,7 +45,7 @@ class ShimmerLoadingWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               physics: const NeverScrollableScrollPhysics(),
               itemCount: itemCount,
-              separatorBuilder: (context, index) => const SizedBox(width: 12),
+              separatorBuilder: (_, __) => const SizedBox(width: 12),
               itemBuilder: (context, index) {
                 return SizedBox(
                   width: cardWidth,
@@ -177,13 +177,22 @@ class MovieRowSkeleton extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Container(
-                          height: 16, width: 100, color: AppColors.surface),
+                        height: 16,
+                        width: 100,
+                        color: AppColors.surface,
+                      ),
                       const SizedBox(height: 14),
                       Container(
-                          height: 12, width: 50, color: AppColors.surface),
+                        height: 12,
+                        width: 50,
+                        color: AppColors.surface,
+                      ),
                       const SizedBox(height: 8),
                       Container(
-                          height: 12, width: 80, color: AppColors.surface),
+                        height: 12,
+                        width: 80,
+                        color: AppColors.surface,
+                      ),
                     ],
                   ),
                 ),
@@ -214,13 +223,22 @@ class MovieRowSkeleton extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Container(
-                          height: 16, width: 100, color: AppColors.surface),
+                        height: 16,
+                        width: 100,
+                        color: AppColors.surface,
+                      ),
                       const SizedBox(height: 14),
                       Container(
-                          height: 12, width: 50, color: AppColors.surface),
+                        height: 12,
+                        width: 50,
+                        color: AppColors.surface,
+                      ),
                       const SizedBox(height: 8),
                       Container(
-                          height: 12, width: 80, color: AppColors.surface),
+                        height: 12,
+                        width: 80,
+                        color: AppColors.surface,
+                      ),
                     ],
                   ),
                 ),
@@ -251,25 +269,33 @@ class MovieRowSkeleton extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Container(
-                          height: 16, width: 100, color: AppColors.surface),
+                        height: 16,
+                        width: 100,
+                        color: AppColors.surface,
+                      ),
                       const SizedBox(height: 14),
                       Container(
-                          height: 12, width: 50, color: AppColors.surface),
+                        height: 12,
+                        width: 50,
+                        color: AppColors.surface,
+                      ),
                       const SizedBox(height: 8),
                       Container(
-                          height: 12, width: 80, color: AppColors.surface),
+                        height: 12,
+                        width: 80,
+                        color: AppColors.surface,
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-
 class MovieCoverSkeleton extends StatelessWidget {
   const MovieCoverSkeleton({super.key});
 
