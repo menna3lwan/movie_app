@@ -12,4 +12,6 @@ abstract class AppAssets {
   static const String imgNoResults = 'assets/images/no-results 1.png';
   static const String imgPopcorn = 'assets/images/popcorn 1.png';
   static const String imgSearch = 'assets/images/search 1.png';
+  static const String dummyImage =
+      'https://www.mountainmotorvehicles.co.uk/wp-content/uploads/2024/05/No-image-available-2-300x300.jpg';
 }

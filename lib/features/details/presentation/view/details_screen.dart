@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:movie_app/core/common/widgets/loading_indicator.dart';
-
+import 'package:movie_app/core/common/widgets/shimmer_loading_widget.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-
 import 'package:movie_app/core/di/service_locator.dart';
-
 import 'package:movie_app/features/details/presentation/view_model/details_cubit.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 import 'package:movie_app/features/details/presentation/widgets/describtion_widget.dart';
-
 import 'package:movie_app/features/details/presentation/widgets/movie_cover_widget.dart';
 import 'package:movie_app/features/details/presentation/widgets/my_sliver_persistent_header.dart';
 import 'package:movie_app/features/details/presentation/widgets/similar_grid.dart';
@@ -20,8 +15,8 @@ class DetailsScreen extends StatefulWidget {
   final int movieSimilarsId;
   const DetailsScreen({
     super.key,
-    this.movieDetailsId = 1419406,
-    this.movieSimilarsId = 1419406,
+    required this.movieDetailsId,
+    required this.movieSimilarsId,
   });
 
   @override
@@ -46,6 +41,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       child: Scaffold(
         backgroundColor: AppColors.background,
         body: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverPersistentHeader(
               delegate: MySliverPersistentHeader(),
@@ -64,7 +60,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return MovieCoverWidget(detailsState: detailsState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: LoadingIndicator()),
+                    child: Center(child: ShimmerLoadingWidget()),
                   );
                 }
               },
@@ -87,7 +83,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return DescribtionWidget(detailsState: detailsState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: LoadingIndicator()),
+                    child: Center(child: ShimmerLoadingWidget()),
                   );
                 }
               },
@@ -102,7 +98,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     child: Center(
                       child: Text(
                         similarState.message,
-                        style: const TextStyle(color: Colors.red),
+                        style: const TextStyle(color: AppColors.error),
                       ),
                     ),
                   );
@@ -110,7 +106,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   return SimilarGrid(similarState: similarState);
                 } else {
                   return const SliverToBoxAdapter(
-                    child: Center(child: LoadingIndicator()),
+                    child: Center(child: ShimmerLoadingWidget()),
                   );
                 }
               },

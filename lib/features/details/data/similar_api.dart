@@ -2,10 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
-import 'package:movie_app/core/network/api_result.dart';
-import 'package:movie_app/core/network/api_urls.dart';
-
-import 'package:movie_app/features/details/data/similar_dto.dart';
+import '../../../core/network/api_result.dart';
+import '../../../core/network/api_urls.dart';
+import '../../../features/details/data/similar_dto.dart';
 @injectable
 class SimilarApi {
    Future<ApiResult<SimilarDto>> getMovieSimilars(int movieId) async {

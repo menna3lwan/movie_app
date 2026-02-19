@@ -6,6 +6,8 @@ import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/di/service_locator.dart';
 import 'package:movie_app/feature/watch_list/data/models/watch_list_model.dart';
 import 'package:movie_app/feature/watch_list/presentation/views/watch_list_view.dart';
+import 'package:movie_app/features/details/presentation/view/details_screen.dart';
+import 'package:movie_app/search_feature/search/presentation/views/search_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,11 +27,11 @@ class MovieApp extends StatelessWidget {
       title: 'Movie App',
       home: Scaffold(
           backgroundColor: AppColors.primary,
-          appBar: CustomAppBar(
-              isTrue: true,
-              leading: Icon(Icons.menu),
-              title: CommonStrings.watchList),
-          body: WatchListView()),
+          // appBar: CustomAppBar(
+          //     isTrue: true,
+          //     leading: Icon(Icons.menu),
+          //     title: CommonStrings.watchList),
+          body: SearchPage()),
     );
   }
 }

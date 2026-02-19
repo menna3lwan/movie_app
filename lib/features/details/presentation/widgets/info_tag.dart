@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class InfoTag extends StatelessWidget {
   final String imageUrl;

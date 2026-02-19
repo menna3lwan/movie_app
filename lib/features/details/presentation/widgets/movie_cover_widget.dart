@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/network/api_urls.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
-import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/constants/app_colors.dart';
+import '../../../../core/network/api_urls.dart';
+import '../../../../core/theming/app_fonts.dart';
+import '../../../../features/details/presentation/view_model/details_states.dart';
 
 class MovieCoverWidget extends StatelessWidget {
   const MovieCoverWidget({super.key, required this.detailsState});
@@ -16,6 +16,7 @@ class MovieCoverWidget extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: 300,
       floating: true,
+      leading: const SizedBox(),
       backgroundColor: Colors.transparent,
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.parallax,
@@ -42,7 +43,6 @@ class MovieCoverWidget extends StatelessWidget {
                   bottom: 16,
                   right: 16,
                   child: Container(
-                    width: 60,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 8,
                       vertical: 4,
@@ -54,10 +54,10 @@ class MovieCoverWidget extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SvgPicture.asset(AppAssets.imgStar),
+                        SvgPicture.asset(AppAssets.star),
                         const SizedBox(width: 5),
                         Text(
-                          "${detailsState.detailsEntity.voteAverage}",
+                          "${detailsState.detailsEntity.voteAverage.toStringAsPrecision(2)}",
                           style: AppFonts.labelLarge,
                         ),
                       ],
