@@ -33,17 +33,14 @@ class DescribtionWidget extends StatelessWidget {
                   const VerticalDivider(color: AppColors.grey),
                   InfoTag(
                     imageUrl: AppAssets.clock,
-                    label: detailsState.detailsEntity.runtime
-                        .toString(),
+                    label: detailsState.detailsEntity.runtime.toString(),
                   ),
                   const VerticalDivider(color: AppColors.grey),
                   InfoTag(
                     imageUrl: AppAssets.ticket,
-                    label: detailsState
-                        .detailsEntity
-                        .genres
-                        .first
-                        .name,
+                    label: detailsState.detailsEntity.genres.isEmpty
+                        ? CommonStrings.action
+                        : detailsState.detailsEntity.genres.first.name,
                   ),
                 ],
               ),
