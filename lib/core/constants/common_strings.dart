@@ -27,8 +27,5 @@ abstract class CommonStrings {
   static const String minutes = 'Minutes';
   static const String notAvailable = 'N/A';
   static const String noOverview = 'No overview yet';
-<<<<<<< HEAD
-=======
  
->>>>>>> df95b67d114e919723fb677e6bafe9b35ef78d93
 }

@@ -4,10 +4,6 @@ import 'app_fonts.dart';
 
 abstract class AppTheme {
   static ThemeData get darkTheme => ThemeData(
-<<<<<<< HEAD
-=======
-        fontFamily: 'Poppins',
->>>>>>> df95b67d114e919723fb677e6bafe9b35ef78d93
         brightness: Brightness.dark,
         useMaterial3: true,
         colorScheme: ColorScheme.dark(
@@ -32,18 +28,7 @@ abstract class AppTheme {
               TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
           unselectedLabelStyle: TextStyle(fontSize: 12),
         ),
-<<<<<<< HEAD
         fontFamily: "Poppins",
-=======
->>>>>>> df95b67d114e919723fb677e6bafe9b35ef78d93
-        textTheme: TextTheme(
-          headlineLarge: AppFonts.headlineLarge,
-          headlineMedium: AppFonts.headlineMedium,
-          titleLarge: AppFonts.titleLarge,
-          titleMedium: AppFonts.titleMedium,
-          bodyLarge: AppFonts.bodyLarge,
-          bodyMedium: AppFonts.bodyMedium,
-          labelLarge: AppFonts.labelLarge,
-        ),
+
       );
 }
