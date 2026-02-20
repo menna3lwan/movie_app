@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/di/service_locator.dart';
@@ -48,18 +49,8 @@ class WatchListItem extends StatelessWidget {
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: CachedNetworkImage(
-                  imageUrl: movie.posterPath,
-                  fit: BoxFit.cover,
-                  placeholder: (_, _2) => Container(
-                    color: AppColors.grey,
-                    child: const Center(child: CircularProgressIndicator()),
-                  ),
-                  errorWidget: (_, _2, _3) => const Icon(Icons.error),
-                  fadeOutDuration: const Duration(milliseconds: 50),
-                ),
-              ),
+                  borderRadius: BorderRadius.circular(16),
+                  child: AppCachedImage(imageUrl: movie.posterPath)),
             ),
             const SizedBox(width: 12),
             Expanded(
