@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 
 import '../../../../core/common/widgets/shimmer_loading_widget.dart';
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/network/api_urls.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_fonts.dart';

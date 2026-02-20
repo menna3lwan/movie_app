@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/core/network/api_result.dart';
-import 'package:movie_app/features/details/data/details_api.dart';
-import 'package:movie_app/features/details/data/details_dto.dart';
+import 'package:movie_app/features/details/data/api/details_api.dart';
+import 'package:movie_app/features/details/data/models/details_dto.dart';
 import 'package:movie_app/features/details/domain/entity/details_entity.dart';
 import 'package:movie_app/features/details/domain/repo/data_source/details_data_source.dart';
 @Injectable(as: DetailsDataSource)
