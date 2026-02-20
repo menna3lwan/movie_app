@@ -10,6 +10,8 @@ class WatchlistSuccess extends WatchlistState {
   final List<WatchlistMovieEntity> movies;
 
   WatchlistSuccess(this.movies);
+
+  bool contains(int id) => movies.any((e) => e.id == id);
 }
 
 class WatchlistEmpty extends WatchlistState {}
