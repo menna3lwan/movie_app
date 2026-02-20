@@ -61,8 +61,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
               pinned: true,
             ),
-
-            /// 🎬 Movie Cover
             BlocBuilder<DetailsCubit, DetailsStates>(
               builder: (context, state) {
                 final detailsState =
@@ -81,8 +79,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 }
               },
             ),
-
-            /// 📝 Description
             BlocBuilder<DetailsCubit, DetailsStates>(
               builder: (context, state) {
                 final detailsState =
@@ -106,8 +102,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 }
               },
             ),
-
-            /// 🎞 Similar Movies
             BlocBuilder<DetailsCubit, DetailsStates>(
               builder: (context, state) {
                 final similarState =
@@ -131,7 +125,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 }
               },
             ),
-
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
           ],
         ),
