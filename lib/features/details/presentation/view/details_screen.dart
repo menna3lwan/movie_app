@@ -7,15 +7,16 @@ import 'package:movie_app/core/di/service_locator.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_cubit.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 import 'package:movie_app/features/details/presentation/widgets/describtion_widget.dart';
-
 import 'package:movie_app/features/details/presentation/widgets/movie_cover_widget.dart';
 import 'package:movie_app/features/details/presentation/widgets/my_sliver_persistent_header.dart';
 import 'package:movie_app/features/details/presentation/widgets/similar_grid.dart';
+
 import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watch_list_cubit.dart';
 
 class DetailsScreen extends StatefulWidget {
   final int movieDetailsId;
   final int movieSimilarsId;
+
   const DetailsScreen({
     super.key,
     required this.movieDetailsId,
@@ -33,16 +34,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   void initState() {
     super.initState();
+
     cubit = getIt<DetailsCubit>()
       ..intent(GetSimilarIntent(widget.movieSimilarsId))
       ..intent(GetDetailsIntent(widget.movieDetailsId));
-    watchlistCubit = getIt<WatchlistCubit>();
+
+    watchlistCubit = getIt<WatchlistCubit>()..intent(LoadWatchlistEvent());
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: cubit,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: cubit),
+        BlocProvider.value(value: watchlistCubit),
+      ],
       child: Scaffold(
         backgroundColor: AppColors.background,
         body: CustomScrollView(
@@ -55,11 +61,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
               pinned: true,
             ),
+
+            /// 🎬 Movie Cover
             BlocBuilder<DetailsCubit, DetailsStates>(
-              bloc: cubit,
               builder: (context, state) {
                 final detailsState =
                     (state as CombinedDetailsState).detailsState;
+
                 if (detailsState is DetailsErrorState) {
                   return SliverToBoxAdapter(
                     child: Center(child: Text(detailsState.message)),
@@ -73,11 +81,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 }
               },
             ),
+
+            /// 📝 Description
             BlocBuilder<DetailsCubit, DetailsStates>(
-              bloc: cubit,
               builder: (context, state) {
                 final detailsState =
                     (state as CombinedDetailsState).detailsState;
+
                 if (detailsState is DetailsErrorState) {
                   return SliverToBoxAdapter(
                     child: Center(
@@ -96,11 +106,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 }
               },
             ),
+
+            /// 🎞 Similar Movies
             BlocBuilder<DetailsCubit, DetailsStates>(
-              bloc: cubit,
               builder: (context, state) {
                 final similarState =
                     (state as CombinedDetailsState).similarState;
+
                 if (similarState is SimilarErrorState) {
                   return SliverToBoxAdapter(
                     child: Center(
@@ -119,6 +131,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 }
               },
             ),
+
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
           ],
         ),

@@ -6,7 +6,7 @@ import 'package:movie_app/features/watch_list/domain/usecases/get_watch_list_use
 import 'package:movie_app/features/watch_list/domain/usecases/remove_from_watch_list_usecase.dart';
 import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watch_list_state.dart';
 
-@injectable
+@LazySingleton()
 class WatchlistCubit extends Cubit<WatchlistState> {
   WatchlistCubit(
     this._getWatchlistUseCase,
@@ -51,17 +51,33 @@ class WatchlistCubit extends Cubit<WatchlistState> {
   }
 
   Future<void> _toggleWatchlist(WatchlistMovieEntity movie) async {
-    final currentMovies = _getWatchlistUseCase();
+    if (state is WatchlistSuccess) {
+      final currentState = state as WatchlistSuccess;
+      final isExist = currentState.contains(movie.id);
 
-    final isExist = currentMovies.any((e) => e.id == movie.id);
-
-    if (isExist) {
-      await _removeFromWatchlistUseCase(movie.id);
+      if (isExist) {
+        await _removeFromWatchlistUseCase(movie.id);
+      } else {
+        await _addToWatchlistUseCase(movie);
+      }
     } else {
-      await _addToWatchlistUseCase(movie);
+      final movies = _getWatchlistUseCase();
+      final isExist = movies.any((e) => e.id == movie.id);
+
+      if (isExist) {
+        await _removeFromWatchlistUseCase(movie.id);
+      } else {
+        await _addToWatchlistUseCase(movie);
+      }
     }
 
-    await _loadWatchlist();
+    final updatedMovies = _getWatchlistUseCase();
+
+    emit(
+      updatedMovies.isEmpty
+          ? WatchlistEmpty()
+          : WatchlistSuccess(updatedMovies),
+    );
   }
 
   Future<void> _removeMovie(int id) async {

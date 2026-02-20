@@ -18,6 +18,7 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
     required this.watchlistCubit,
     required this.cubit,
   });
+
   @override
   Widget build(
     BuildContext context,
@@ -28,36 +29,38 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
       title: "Details",
       centerTitle: true,
       actions: [
-        BlocBuilder<WatchlistCubit, WatchlistState>(
-            bloc: watchlistCubit,
-            builder: (context, state) {
-              final detailsState = cubit.state;
+        BlocBuilder<DetailsCubit, DetailsStates>(
+          bloc: cubit,
+          builder: (context, detailsCubitState) {
+            return BlocBuilder<WatchlistCubit, WatchlistState>(
+              bloc: watchlistCubit,
+              builder: (context, watchlistState) {
+                bool isSaved = false;
 
-              bool isSaved = false;
+                if (detailsCubitState is CombinedDetailsState &&
+                    detailsCubitState.detailsState is DetailsSuccessState) {
+                  final details =
+                      detailsCubitState.detailsState as DetailsSuccessState;
+                  final movieId = details.detailsEntity.id;
 
-              if (detailsState is CombinedDetailsState &&
-                  detailsState.detailsState is DetailsSuccessState) {
-                final details =
-                    detailsState.detailsState as DetailsSuccessState;
+                  if (watchlistState is WatchlistSuccess) {
+                    isSaved = watchlistState.contains(movieId);
+                  } else {
+                    isSaved = watchlistCubit.isMovieInWatchlist(movieId);
+                  }
+                }
 
-                final movieId = details.detailsEntity.id;
-
-                isSaved = watchlistCubit.isMovieInWatchlist(movieId);
-              }
-
-              return IconButton(
+                return IconButton(
                   icon: isSaved
-                      ? SvgPicture.asset(
-                          AppAssets.YellowBookMark,
-                        )
+                      ? SvgPicture.asset(AppAssets.YellowBookMark)
                       : SvgPicture.asset(AppAssets.bookMark),
                   onPressed: () {
-                    final detailsState = cubit.state;
+                    final currentState = cubit.state;
 
-                    if (detailsState is CombinedDetailsState &&
-                        detailsState.detailsState is DetailsSuccessState) {
+                    if (currentState is CombinedDetailsState &&
+                        currentState.detailsState is DetailsSuccessState) {
                       final details =
-                          detailsState.detailsState as DetailsSuccessState;
+                          currentState.detailsState as DetailsSuccessState;
 
                       final movie = WatchlistMovieEntity(
                         id: details.detailsEntity.id,
@@ -74,8 +77,12 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
 
                       watchlistCubit.intent(ToggleWatchlistEvent(movie));
                     }
-                  });
-            }),
+                  },
+                );
+              },
+            );
+          },
+        ),
       ],
     );
   }
@@ -87,7 +94,6 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
   double get minExtent => 110;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
-  }
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      true;
 }
