@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
@@ -121,15 +120,6 @@ class SearchItem extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildPlaceholder() {
-    return Container(
-      width: 110,
-      height: 160,
-      color: Colors.grey[800],
-      child: const Icon(Icons.movie, color: AppColors.textSecondary),
     );
   }
 }

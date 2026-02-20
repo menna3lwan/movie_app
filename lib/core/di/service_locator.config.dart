@@ -12,7 +12,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:hive/hive.dart' as _i979;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../features/details/data/details_api.dart' as _i111;
+import '../../features/details/data/api/details_api.dart' as _i111;
 import '../../features/details/data/repo/data_source/details_data_source_imp.dart'
     as _i482;
 import '../../features/details/data/repo/data_source/similar_data_source_imp.dart'
@@ -21,7 +21,7 @@ import '../../features/details/data/repo/repository/detais_repo_imp.dart'
     as _i698;
 import '../../features/details/data/repo/repository/similar_repo_imp.dart'
     as _i362;
-import '../../features/details/data/similar_api.dart' as _i489;
+import '../../features/details/data/api/similar_api.dart' as _i489;
 import '../../features/details/domain/repo/data_source/details_data_source.dart'
     as _i267;
 import '../../features/details/domain/repo/data_source/similar_data_source.dart'

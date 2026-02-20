@@ -3,9 +3,9 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 
-import '../../../core/network/api_result.dart';
-import '../../../core/network/api_urls.dart';
-import 'details_dto.dart';
+import '../../../../core/network/api_result.dart';
+import '../../../../core/network/api_urls.dart';
+import '../models/details_dto.dart';
 import 'package:injectable/injectable.dart';
 
 
