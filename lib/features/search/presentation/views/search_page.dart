@@ -66,17 +66,17 @@ class SearchPage extends StatelessWidget {
                           );
                         }
 
-                        // 🟢 Success
+              
                         if (state is SearchSuccessState) {
                           final movies = state.movies;
 
-                          /// لو النتيجة فاضية، نعرض رسالة "No results"
+                      
 
                           if (movies.isEmpty) {
                             return const EmptyStateWidget(
                               message: CommonStrings.noResultsTitle,
                               supMassage: CommonStrings.noResultsSubtitle,
-                              // imagePath: AppAssets.imgSearch, // غيرت الصوره بس الاسيتس عندي فيها مشكله
+                             
                             );
                           }
 

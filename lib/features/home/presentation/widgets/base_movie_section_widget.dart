@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 
 import '../../../../core/common/widgets/shimmer_loading_widget.dart';
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/network/api_urls.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_fonts.dart';
@@ -20,9 +20,8 @@ abstract class BaseMovieSectionWidget extends StatelessWidget {
   Widget buildSection(List<MovieEntity> movies) {
     if (movies.isEmpty) return const SizedBox.shrink();
 
-    final displayMovies = movies.length > maxItems
-        ? movies.sublist(0, maxItems)
-        : movies;
+    final displayMovies =
+        movies.length > maxItems ? movies.sublist(0, maxItems) : movies;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,17 +47,12 @@ abstract class BaseMovieSectionWidget extends StatelessWidget {
                   width: cardWidth,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: movie.posterPath != null
-                        ? Image.network(
-                            '${ApiUrls.prefixImageUrl}${movie.posterPath}',
-                            width: cardWidth,
-                            height: cardHeight,
-                            fit: BoxFit.cover,
-                          )
-                        : Container(
-                            color: AppColors.surface,
-                            child: const Icon(Icons.movie, color: Colors.grey),
-                          ),
+                    child: AppCachedImage(
+                      imageUrl: '${ApiUrls.prefixImageUrl}${movie.posterPath}',
+                      width: cardWidth,
+                      height: cardHeight,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               );

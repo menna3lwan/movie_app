@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
@@ -32,20 +32,13 @@ class SearchItem extends StatelessWidget {
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-              fadeOutDuration: const Duration(milliseconds: 50),
-              imageUrl: imageUrl,
-              width: 110,
-              height: 160,
-              fit: BoxFit.cover,
-              placeholder: (_, _2) => Container(
-                color: AppColors.grey,
-                child: const Center(child: CircularProgressIndicator()),
-              ),
-              errorWidget: (_, _2, _3) => _buildPlaceholder(),
-            ),
-          ),
+              borderRadius: BorderRadius.circular(16),
+              child: AppCachedImage(
+                imageUrl: imageUrl,
+                width: 110,
+                height: 160,
+                fit: BoxFit.cover,
+              )),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -127,15 +120,6 @@ class SearchItem extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildPlaceholder() {
-    return Container(
-      width: 110,
-      height: 160,
-      color: Colors.grey[800],
-      child: const Icon(Icons.movie, color: AppColors.textSecondary),
     );
   }
 }
