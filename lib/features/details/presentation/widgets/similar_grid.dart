@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/common/widgets/empty_state_widget.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/network/api_urls.dart';
@@ -50,17 +51,13 @@ class SimilarGrid extends StatelessWidget {
                       );
                     },
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: CachedNetworkImage(
-                        imageUrl: similarState
-                                .similarEntity.results[index].posterPath.isEmpty
-                            ? AppAssets.dummyImage
-                            : '${ApiUrls.prefixImageUrl}${similarState.similarEntity.results[index].posterPath}',
-                        width: 100,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        borderRadius: BorderRadius.circular(15),
+                        child: AppCachedImage(
+                          imageUrl: similarState.similarEntity.results[index]
+                                  .posterPath.isEmpty
+                              ? AppAssets.dummyImage
+                              : '${ApiUrls.prefixImageUrl}${similarState.similarEntity.results[index].posterPath}',
+                        )),
                   );
                 },
                 childCount: similarState.similarEntity.results.length,
