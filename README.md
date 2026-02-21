@@ -31,7 +31,7 @@ The codebase follows a feature-based structure with clear separation between pre
 ## 🎥 Demo Video
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie_design.gif" width="300" alt="Movies App Demo"/>
+  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/moviedesign-ezgif.com-optimize.gif" width="300" alt="Movies App Demo"/>
 </p>
 
 ---
@@ -98,9 +98,10 @@ The goal of this project is to demonstrate a structured and scalable Flutter app
 
 | Name |
 |---|
-| Ahmed El-Sabbagh |
 | Nour Waleed |
 | Youssef Waleed |
+| Ahmed El-Sabbagh |
+
 
 ---
 
