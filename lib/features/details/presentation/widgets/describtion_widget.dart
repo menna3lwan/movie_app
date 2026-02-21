@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
@@ -39,7 +40,7 @@ class DescribtionWidget extends StatelessWidget {
                   InfoTag(
                     imageUrl: AppAssets.ticket,
                     label: detailsState.detailsEntity.genres.isEmpty
-                        ? CommonStrings.action
+                        ? CommonStrings.action.tr().tr()
                         : detailsState.detailsEntity.genres.first.name,
                   ),
                 ],

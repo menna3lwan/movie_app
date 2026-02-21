@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/common/widgets/custom_app_bar.dart';
 import 'package:movie_app/core/common/widgets/shimmer_loading_widget.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
@@ -9,6 +9,7 @@ import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watc
 import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watch_list_state.dart';
 import 'package:movie_app/features/watch_list/presentation/widgets/watch_list_empty_widget.dart';
 import 'package:movie_app/features/watch_list/presentation/widgets/watch_list_item_widget.dart';
+import 'package:movie_app/core/common/widgets/custom_app_bar.dart';
 
 class WatchListView extends StatefulWidget {
   const WatchListView({super.key});
@@ -24,18 +25,16 @@ class _WatchListViewState extends State<WatchListView> {
   void initState() {
     super.initState();
     _cubit = getIt<WatchlistCubit>();
-    // ✅ load مرة واحدة بس في initState
     _cubit.intent(LoadWatchlistEvent());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      // ✅ value بدل create عشان الـ singleton
       value: _cubit,
       child: Scaffold(
         appBar: CustomAppBar(
-          title: CommonStrings.watchList,
+          title: CommonStrings.watchList.tr(),
           leading: Icon(Icons.menu),
         ),
         backgroundColor: AppColors.primary,

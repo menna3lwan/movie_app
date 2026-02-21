@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
@@ -31,7 +32,7 @@ class EmptyStateWidget extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              message,
+              message.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: AppColors.textPrimary,
@@ -41,7 +42,7 @@ class EmptyStateWidget extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              supMassage,
+              supMassage.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: AppColors.grey,

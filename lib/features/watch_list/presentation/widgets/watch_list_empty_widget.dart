@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
@@ -19,11 +20,11 @@ class WatchListEmptyWidget extends StatelessWidget {
             height: 76,
           ),
           const SizedBox(height: 20),
-          Text(CommonStrings.noMovie,
+          Text(CommonStrings.noMovie.tr().tr(),
               style: AppFonts.titleMedium.copyWith(color: AppColors.whiteGray)),
           const SizedBox(height: 8),
           Text(
-            CommonStrings.noResultsSubtitle,
+            CommonStrings.noResultsSubtitle.tr().tr(),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: AppColors.grey,

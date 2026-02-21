@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/common/widgets/app_error_widget.dart';
@@ -36,7 +37,7 @@ class SearchPage extends StatelessWidget {
                     },
                     style: const TextStyle(color: AppColors.textPrimary),
                     decoration: InputDecoration(
-                      hintText: CommonStrings.searchHint,
+                      hintText: CommonStrings.searchHint.tr().tr(),
                       hintStyle:
                           const TextStyle(color: AppColors.textSecondary),
                       suffixIcon: const Icon(
@@ -73,9 +74,10 @@ class SearchPage extends StatelessWidget {
                       
 
                           if (movies.isEmpty) {
-                            return const EmptyStateWidget(
-                              message: CommonStrings.noResultsTitle,
-                              supMassage: CommonStrings.noResultsSubtitle,
+                            return EmptyStateWidget(
+                              message: CommonStrings.noResultsTitle.tr().tr(),
+                              supMassage:
+                                  CommonStrings.noResultsSubtitle.tr().tr(),
                              
                             );
                           }
@@ -93,12 +95,11 @@ class SearchPage extends StatelessWidget {
                           );
                         }
 
-                        /// الحالة الافتراضية (لما يكون لسه ما كتبش حاجة أو مسح كل حاجة)
 
-                        return const EmptyStateWidget(
+                        return EmptyStateWidget(
                           // imagePath: AppAssets.imgFirstSearch,
 
-                          message: CommonStrings.searchHint,
+                          message: CommonStrings.searchHint.tr().tr(),
                         );
                       },
                     ),

@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final Widget? leading;
   final bool? centerTitle;
+
   const CustomAppBar({
     super.key,
     required this.title,
@@ -21,16 +22,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      
-      title: Text(title, style: AppFonts.appBarTitle,),
+      title: Text(title, style: AppFonts.appBarTitle),
       backgroundColor: AppColors.background,
-      
       elevation: 0,
       automaticallyImplyLeading: showBackButton,
       iconTheme: const IconThemeData(color: AppColors.textPrimary),
-      actions: actions,
       leading: leading,
       centerTitle: centerTitle,
+      actions: actions,
     );
   }
 

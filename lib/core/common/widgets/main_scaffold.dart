@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -59,7 +60,7 @@ class MainScaffold extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              label: CommonStrings.home,
+              label: CommonStrings.home.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -76,7 +77,7 @@ class MainScaffold extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              label: CommonStrings.search,
+              label: CommonStrings.search.tr(),
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -93,7 +94,7 @@ class MainScaffold extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              label: CommonStrings.watchList,
+              label: CommonStrings.watchList.tr(),
             ),
           ],
         ),
