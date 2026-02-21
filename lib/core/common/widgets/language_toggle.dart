@@ -13,7 +13,7 @@ class LanguageToggle extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 12),
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: AppColorsDark.surface,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Row(
@@ -54,14 +54,14 @@ class _LangButton extends StatelessWidget {
         duration: const Duration(milliseconds: 250),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.secondary : Colors.transparent,
+          color: isSelected ? AppColorsDark.secondary : Colors.transparent,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           label,
           style: TextStyle(
             fontSize: 12,
-            color: isSelected ? AppColors.textPrimary : AppColors.grey,
+            color: isSelected ? AppColorsDark.textPrimary : AppColorsDark.grey,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),

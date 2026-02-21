@@ -40,37 +40,28 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-
-              final topRatedState = combinedState.topRatedState;
-              final popularState = combinedState.popularState;
-              final releasesState = combinedState.releasesState;
-
-              return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BlocBuilder<ThemeCubit, ThemeMode>(
-                      builder: (context, themeMode) {
-                        return ThemeToggle(
-                          onThemeChanged: (String themeMode) {
-                            context.read<ThemeCubit>().changeTheme(themeMode);
-                          },
-                        );
+                BlocBuilder<ThemeCubit, ThemeMode>(
+                  builder: (context, themeMode) {
+                    return ThemeToggle(
+                      onThemeChanged: (String themeMode) {
+                        context.read<ThemeCubit>().changeTheme(themeMode);
                       },
-                    ),
-                    const SizedBox(height: 16),
-                    TopRatedWidget(
-                      movies: topRatedState is TopRatedSuccessState
-                          ? topRatedState.movies
+                    );
+                  },
+                ),
+                const SizedBox(height: 16),
+                BlocBuilder<HomeProvider, HomeState>(
+                  buildWhen: (previous, current) => current is TopRatedState,
+                  builder: (context, state) {
+                    return TopRatedWidget(
+                      movies: state is TopRatedSuccess ? state.movies
                           : null,
                       error: state is TopRatedError ? state.message
                           : null,
                     );
                   },
                 ),
-
                 const SizedBox(height: 16),
-
                 BlocBuilder<HomeProvider, HomeState>(
                   buildWhen: (previous, current) => current is PopularState,
                   builder: (context, state) {
@@ -82,9 +73,7 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-
                 const SizedBox(height: 8),
-
                 BlocBuilder<HomeProvider, HomeState>(
                   buildWhen: (previous, current) => current is ReleasesState,
                   builder: (context, state) {
@@ -96,7 +85,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   },
                 ),
-
                 const SizedBox(height: 24),
               ],
             ),
