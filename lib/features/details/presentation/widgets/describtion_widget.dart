@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 import 'package:movie_app/features/details/presentation/widgets/info_tag.dart';
 
@@ -30,12 +28,14 @@ class DescribtionWidget extends StatelessWidget {
                     imageUrl: AppAssets.calendarBlank,
                     label: detailsState.detailsEntity.releaseDate,
                   ),
-                  const VerticalDivider(color: AppColors.grey),
+                  VerticalDivider(
+                      color: Theme.of(context).colorScheme.outlineVariant),
                   InfoTag(
                     imageUrl: AppAssets.clock,
                     label: detailsState.detailsEntity.runtime.toString(),
                   ),
-                  const VerticalDivider(color: AppColors.grey),
+                  VerticalDivider(
+                      color: Theme.of(context).colorScheme.outlineVariant),
                   InfoTag(
                     imageUrl: AppAssets.ticket,
                     label: detailsState.detailsEntity.genres.isEmpty
@@ -48,12 +48,16 @@ class DescribtionWidget extends StatelessWidget {
             const SizedBox(height: 25),
             Text(
               detailsState.detailsEntity.overview,
-              style: AppFonts.bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
             ),
             const SizedBox(height: 30),
-            const Text(
+            Text(
               CommonStrings.similar,
-              style: AppFonts.bodyMedium,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
             ),
             const SizedBox(height: 15),
           ],

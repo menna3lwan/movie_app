@@ -11,4 +11,5 @@ void main() async {
   Hive.registerAdapter(WatchlistMovieModelAdapter());
   await configureDependencies();
   runApp(const MovieApp());
+
 }

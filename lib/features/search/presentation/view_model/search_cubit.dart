@@ -9,8 +9,7 @@ import 'search_states.dart';
 
 @injectable
 class SearchCubit extends Cubit<SearchStates> {
-  SearchCubit(this._searchMoviesUseCase)
-      : super(SearchInitialState());
+  SearchCubit(this._searchMoviesUseCase) : super(SearchInitialState());
 
   final GetSearchMoviesUseCase _searchMoviesUseCase;
   Timer? _debounce;

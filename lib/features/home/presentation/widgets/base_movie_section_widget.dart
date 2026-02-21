@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/common/widgets/shimmer_loading_widget.dart';
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/network/api_urls.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_fonts.dart';
@@ -20,53 +19,59 @@ abstract class BaseMovieSectionWidget extends StatelessWidget {
   Widget buildSection(List<MovieEntity> movies) {
     if (movies.isEmpty) return const SizedBox.shrink();
 
-    final displayMovies = movies.length > maxItems
-        ? movies.sublist(0, maxItems)
-        : movies;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-          child: Text(sectionTitle, style: AppFonts.sectionTitle),
-        ),
-        SizedBox(
-          height: cardHeight,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            itemCount: displayMovies.length,
-            separatorBuilder: (context, index) => const SizedBox(width: 12),
-            itemBuilder: (context, index) {
-              final movie = displayMovies[index];
-              return GestureDetector(
-                onTap: () {
-                  context.push(AppRoutes.movieDetail.withId(movie.id));
-                },
-                child: SizedBox(
-                  width: cardWidth,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: movie.posterPath != null
-                        ? Image.network(
-                            '${ApiUrls.prefixImageUrl}${movie.posterPath}',
-                            width: cardWidth,
-                            height: cardHeight,
-                            fit: BoxFit.cover,
-                          )
-                        : Container(
-                            color: AppColors.surface,
-                            child: const Icon(Icons.movie, color: Colors.grey),
-                          ),
-                  ),
-                ),
-              );
-            },
+    final displayMovies =
+        movies.length > maxItems ? movies.sublist(0, maxItems) : movies;
+    return Builder(builder: (context) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            child: Text(sectionTitle,
+                style: AppFonts.sectionTitle
+                    .copyWith(color: Theme.of(context).colorScheme.onPrimary)),
           ),
-        ),
-      ],
-    );
+          SizedBox(
+            height: cardHeight,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              itemCount: displayMovies.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
+              itemBuilder: (context, index) {
+                final movie = displayMovies[index];
+                return GestureDetector(
+                  onTap: () {
+                    context.push(AppRoutes.movieDetail.withId(movie.id));
+                  },
+                  child: SizedBox(
+                    width: cardWidth,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: movie.posterPath != null
+                          ? Image.network(
+                              '${ApiUrls.prefixImageUrl}${movie.posterPath}',
+                              width: cardWidth,
+                              height: cardHeight,
+                              fit: BoxFit.cover,
+                            )
+                          : Container(
+                              color: Theme.of(context).colorScheme.surface,
+                              child: Icon(Icons.movie,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .outlineVariant),
+                            ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      );
+    });
   }
 
   Widget buildShimmerLoading() {

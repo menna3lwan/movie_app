@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/network/api_urls.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
 
 class MovieCoverWidget extends StatelessWidget {
@@ -48,7 +46,10 @@ class MovieCoverWidget extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: AppColors.lightDark.withValues(alpha: .8),
+                      color: Theme.of(context)
+                          .colorScheme
+                          .inverseSurface
+                          .withValues(alpha: .8),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Row(
@@ -57,8 +58,15 @@ class MovieCoverWidget extends StatelessWidget {
                         SvgPicture.asset(AppAssets.star),
                         const SizedBox(width: 5),
                         Text(
-                          detailsState.detailsEntity.voteAverage.toStringAsPrecision(2),
-                          style: AppFonts.labelLarge,
+                          detailsState.detailsEntity.voteAverage
+                              .toStringAsPrecision(2),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primaryContainer,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                       ],
                     ),
@@ -92,8 +100,8 @@ class MovieCoverWidget extends StatelessWidget {
                           padding: const EdgeInsets.only(bottom: 12),
                           child: Text(
                             detailsState.detailsEntity.title,
-                            style: const TextStyle(
-                              color: Colors.white,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onPrimary,
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
                             ),

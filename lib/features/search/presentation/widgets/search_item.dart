@@ -4,7 +4,6 @@ import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/network/api_urls.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
 import 'package:movie_app/features/details/presentation/view/details_screen.dart';
 import 'package:movie_app/features/search/domain/entity/movie_entity.dart';
 
@@ -39,11 +38,11 @@ class SearchItem extends StatelessWidget {
               width: 110,
               height: 160,
               fit: BoxFit.cover,
-              placeholder: (_, _2) => Container(
-                color: AppColors.grey,
+              placeholder: (_, __) => Container(
+                color: Theme.of(context).colorScheme.outlineVariant,
                 child: const Center(child: CircularProgressIndicator()),
               ),
-              errorWidget: (_, _2, _3) => _buildPlaceholder(),
+              errorWidget: (_, __, ___) => _buildPlaceholder(),
             ),
           ),
           Expanded(
@@ -54,42 +53,46 @@ class SearchItem extends StatelessWidget {
                 children: [
                   Text(
                     movie.title,
-                    style: AppFonts.titleMedium,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 14),
                   Row(
                     children: [
-                      const Icon(Icons.star, color: AppColors.star, size: 16),
+                      Icon(Icons.star,
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          size: 16),
                       const SizedBox(width: 4),
                       Text(
                         movie.voteAverage.toStringAsFixed(1),
-                        style: AppFonts.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.language,
-                        color: AppColors.textPrimary,
+                        //!=================== icons colors ===============================
+                        color: Theme.of(context).colorScheme.onError,
                         size: 16,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         movie.originalLanguage,
-                        style: AppFonts.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.calendar_today,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         size: 16,
                       ),
                       const SizedBox(width: 4),
@@ -97,7 +100,7 @@ class SearchItem extends StatelessWidget {
                         movie.releaseDate.isNotEmpty
                             ? movie.releaseDate.split('-')[0]
                             : CommonStrings.notAvailable,
-                        style: AppFonts.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
@@ -105,16 +108,16 @@ class SearchItem extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.description,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onPrimary,
                         size: 16,
                       ),
-                      const SizedBox(width: 4),
+                      SizedBox(width: 4),
                       Expanded(
                         child: Text(
                           movie.overview,
-                          style: AppFonts.bodyMedium,
+                          style: Theme.of(context).textTheme.bodyMedium,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -135,7 +138,7 @@ class SearchItem extends StatelessWidget {
       width: 110,
       height: 160,
       color: Colors.grey[800],
-      child: const Icon(Icons.movie, color: AppColors.textSecondary),
+      child: const Icon(Icons.movie, color: AppColorsDark.textSecondary),
     );
   }
 }

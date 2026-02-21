@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/di/service_locator.dart';
 import '../view_model/home_provider.dart';
 import '../view_model/home_states.dart';
@@ -33,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     return BlocProvider.value(
       value: homeProvider,
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: SafeArea(
           child: BlocBuilder<HomeProvider, HomeStates>(
             builder: (context, state) {

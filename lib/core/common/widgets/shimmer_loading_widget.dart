@@ -35,7 +35,7 @@ class ShimmerLoadingWidget extends StatelessWidget {
               child: Container(
                 width: titleWidth,
                 height: 20,
-                color: AppColors.surface,
+                color: Theme.of(context).colorScheme.surface,
               ),
             ),
           SizedBox(
@@ -51,7 +51,8 @@ class ShimmerLoadingWidget extends StatelessWidget {
                   width: cardWidth,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Container(color: AppColors.surface),
+                    child:
+                        Container(color: Theme.of(context).colorScheme.surface),
                   ),
                 );
               },
@@ -92,7 +93,7 @@ class ShimmerGridLoadingWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Container(color: AppColors.surface),
+            child: Container(color: Theme.of(context).colorScheme.surface),
           );
         },
       ),
@@ -131,7 +132,7 @@ class ShimmerNowPlayingWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     child: Container(
                       height: cardHeight,
-                      color: AppColors.surface,
+                      color: Theme.of(context).colorScheme.surface,
                     ),
                   ),
                 ),
@@ -161,7 +162,7 @@ class MovieRowSkeleton extends StatelessWidget {
                   width: 95,
                   height: 120,
                   decoration: BoxDecoration(
-                    color: AppColors.surface,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
@@ -173,25 +174,25 @@ class MovieRowSkeleton extends StatelessWidget {
                       Container(
                         height: 16,
                         width: double.infinity,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         height: 16,
                         width: 100,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 14),
                       Container(
                         height: 12,
                         width: 50,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         height: 12,
                         width: 80,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ],
                   ),
@@ -207,7 +208,7 @@ class MovieRowSkeleton extends StatelessWidget {
                   width: 95,
                   height: 120,
                   decoration: BoxDecoration(
-                    color: AppColors.surface,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
@@ -219,25 +220,25 @@ class MovieRowSkeleton extends StatelessWidget {
                       Container(
                         height: 16,
                         width: double.infinity,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         height: 16,
                         width: 100,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 14),
                       Container(
                         height: 12,
                         width: 50,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         height: 12,
                         width: 80,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ],
                   ),
@@ -253,7 +254,7 @@ class MovieRowSkeleton extends StatelessWidget {
                   width: 95,
                   height: 120,
                   decoration: BoxDecoration(
-                    color: AppColors.surface,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
                   ),
                 ),
@@ -265,25 +266,25 @@ class MovieRowSkeleton extends StatelessWidget {
                       Container(
                         height: 16,
                         width: double.infinity,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         height: 16,
                         width: 100,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 14),
                       Container(
                         height: 12,
                         width: 50,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                       const SizedBox(height: 8),
                       Container(
                         height: 12,
                         width: 80,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ],
                   ),
@@ -296,6 +297,7 @@ class MovieRowSkeleton extends StatelessWidget {
     );
   }
 }
+
 class MovieCoverSkeleton extends StatelessWidget {
   const MovieCoverSkeleton({super.key});
 
@@ -316,7 +318,7 @@ class MovieCoverSkeleton extends StatelessWidget {
                 child: Container(
                   height: 280,
                   width: double.infinity,
-                  color: AppColors.surface,
+                  color: Theme.of(context).colorScheme.surface,
                 ),
               ),
               Positioned(
@@ -326,7 +328,7 @@ class MovieCoverSkeleton extends StatelessWidget {
                   width: 60,
                   height: 24,
                   decoration: BoxDecoration(
-                    color: AppColors.surface,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
@@ -347,7 +349,7 @@ class MovieCoverSkeleton extends StatelessWidget {
                       child: Container(
                         width: 110,
                         height: 165,
-                        color: AppColors.surface,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                     const SizedBox(width: 20),
@@ -360,13 +362,13 @@ class MovieCoverSkeleton extends StatelessWidget {
                             Container(
                               height: 20,
                               width: double.infinity,
-                              color: AppColors.surface,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                             const SizedBox(height: 8),
                             Container(
                               height: 20,
                               width: 150,
-                              color: AppColors.surface,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                           ],
                         ),
@@ -401,11 +403,13 @@ class DescriptionSkeleton extends StatelessWidget {
                 children: [
                   _tagSkeleton(),
                   const SizedBox(width: 12),
-                  const VerticalDivider(color: AppColors.grey),
+                  VerticalDivider(
+                      color: Theme.of(context).colorScheme.outlineVariant),
                   const SizedBox(width: 12),
                   _tagSkeleton(),
                   const SizedBox(width: 12),
-                  const VerticalDivider(color: AppColors.grey),
+                  VerticalDivider(
+                      color: Theme.of(context).colorScheme.outlineVariant),
                   const SizedBox(width: 12),
                   _tagSkeleton(),
                 ],
@@ -431,7 +435,7 @@ class DescriptionSkeleton extends StatelessWidget {
       width: 90,
       height: 24,
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color:  AppColorsDark.surface,
         borderRadius: BorderRadius.circular(20),
       ),
     );
@@ -442,7 +446,7 @@ class DescriptionSkeleton extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: AppColorsDark.surface,
         borderRadius: BorderRadius.circular(6),
       ),
     );

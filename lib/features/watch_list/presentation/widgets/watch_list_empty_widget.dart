@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/theming/app_fonts.dart';
 
@@ -15,18 +14,19 @@ class WatchListEmptyWidget extends StatelessWidget {
         children: [
           Image.asset(
             AppAssets.imgFolder,
-            width: 76,
-            height: 76,
+            width: 150,
+            height: 150,
           ),
           const SizedBox(height: 20),
           Text(CommonStrings.noMovie,
-              style: AppFonts.titleMedium.copyWith(color: AppColors.whiteGray)),
+              style: AppFonts.titleLarge
+                  .copyWith(color: Theme.of(context).colorScheme.onPrimary)),
           const SizedBox(height: 8),
           Text(
             CommonStrings.noResultsSubtitle,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: AppColors.grey,
+              color: Theme.of(context).colorScheme.outlineVariant,
               fontSize: 12,
               fontWeight: FontWeight.w500,
             ),

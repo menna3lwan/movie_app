@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/constants/app_colors.dart';
 
 class InfoTag extends StatelessWidget {
   final String imageUrl;
@@ -17,15 +16,18 @@ class InfoTag extends StatelessWidget {
             imageUrl,
             width: 16,
             height: 16,
-            colorFilter: const ColorFilter.mode(
-              AppColors.grey,
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).colorScheme.outlineVariant,
               BlendMode.srcIn,
             ),
           ),
           const SizedBox(width: 5),
           Text(
             label,
-            style: const TextStyle(color: AppColors.grey, fontSize: 12),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.outlineVariant,
+              fontSize: 12,
+            ),
           ),
         ],
       ),

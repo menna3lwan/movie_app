@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/theming/app_fonts.dart';
 import 'package:movie_app/features/watch_list/domain/entity/watch_list_entity.dart';
 import 'package:movie_app/features/watch_list/presentation/widgets/info_row_widget.dart';
@@ -35,7 +34,7 @@ class WatchListItem extends StatelessWidget {
                 imageUrl: movie.posterPath,
                 fit: BoxFit.cover,
                 placeholder: (_, _2) => Container(
-                  color: AppColors.grey,
+                  color: Theme.of(context).colorScheme.outlineVariant,
                   child: const Center(child: CircularProgressIndicator()),
                 ),
                 errorWidget: (_, _2, _3) => const Icon(Icons.error),
@@ -50,15 +49,16 @@ class WatchListItem extends StatelessWidget {
               children: [
                 Text(
                   movie.title,
-                  style: AppFonts.bodyLarge,
+                  style: AppFonts.bodyLarge
+                      .copyWith(color: Theme.of(context).colorScheme.onPrimary),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 14),
                 InfoRowWidget(
                   icon: AppAssets.star,
-                  text: movie.voteAverage.toString(),
-                  color: AppColors.star,
+                  text: movie.voteAverage.toStringAsPrecision(2),
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
                 const SizedBox(height: 5),
                 InfoRowWidget(
