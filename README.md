@@ -94,13 +94,14 @@ The goal of this project is to demonstrate a structured and scalable Flutter app
 
 ---
 
-## Team
+| Name | GitHub |
+|---|---|
+| Nour Waleed | [@NorhanWalid2](https://github.com/NorhanWalid2) |
+| Youssef Waleed | [@dr-walid](https://github.com/dr-walid) |
+| Menna Elwan | [@menna3lwan](https://github.com/menna3lwan) |
+| Ahmed El-Sabbagh | [@Ahmed-amr59](https://github.com/Ahmed-amr59) |
 
-| Name |
-|---|
-| Nour Waleed |
-| Youssef Waleed |
-| Ahmed El-Sabbagh |
+
 
 
 ---
