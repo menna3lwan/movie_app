@@ -15,76 +15,59 @@
 
 # Movies App
 
-Movies App is a scalable Flutter application built with a production-ready Clean Architecture approach.  
-The project focuses on strong separation of concerns, modular design, and maintainable code structure suitable for real-world applications.
+Movies App is a scalable Flutter application built using Clean Architecture principles.  
+The project focuses on modular structure, maintainability, and production-ready design.
 
-This application demonstrates how to build a feature-driven architecture that keeps UI, business logic, and data sources fully decoupled while maintaining clear data flow and predictable state management.
-
-The app allows users to:
+The application allows users to:
 
 - Browse Popular Movies  
 - Explore Top Rated Movies  
 - Discover Latest Releases  
-- Experience responsive UI updates driven by structured state management  
+- Experience dynamic UI updates powered by structured state management  
 
-The architecture ensures that each layer has a single responsibility, making the project easy to test, extend, and refactor without breaking other components.
+The codebase follows a feature-based structure with clear separation between presentation, domain logic, and data handling layers. The architecture ensures clean abstraction, testability, and easy extensibility for future features.
 
 ---
 
 ## Demo
 
+The following preview demonstrates the application interface and user experience.
+
 <p align="center">
-  <a href="https://github.com/menna3lwan/movie_app/blob/dev/movie%20design.gif">
-    <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif" width="900"/>
-  </a>
+  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif" alt="Movies App Demo" width="900"/>
 </p>
 
-Click the preview above to view the full demo.
+The demo showcases movie sections loading dynamically with structured state handling and responsive UI updates.
 
 ---
 
-## Technical Highlights
+## Project Highlights
 
-- Clean Architecture layered structure  
-- Feature-based modular organization  
-- Repository pattern implementation  
-- DTO to Entity transformation  
-- Domain-driven design principles  
+- Clean Architecture layered implementation  
+- Feature-based modular structure  
+- Repository Pattern abstraction  
+- DTO to Entity mapping  
 - Dependency Injection using Injectable  
-- Structured state management with Provider  
 - Centralized API result handling  
-- Clear and maintainable folder hierarchy  
-
----
-
-## Engineering Focus
-
-This project emphasizes:
-
-- Scalability for future features  
-- Replaceable data sources without affecting business logic  
-- Testable domain layer  
-- Predictable state transitions  
-- Clear abstraction boundaries  
-
-The codebase is organized to reflect real production standards rather than a simple demo structure.
+- Scalable folder organization  
+- Production-oriented state management  
 
 ---
 
 ## Tech Stack
 
-- Flutter  
-- Dart  
-- Provider  
-- Injectable  
-- HTTP  
-- Clean Architecture Pattern  
+Flutter  
+Dart  
+Provider  
+Injectable  
+HTTP  
+Clean Architecture Pattern  
 
 ---
 
 ## Objective
 
-The goal of this project is to showcase a real implementation of Clean Architecture in Flutter, demonstrating structured application design, modularity, and maintainability suitable for production environments.
+This project demonstrates how to build a structured, scalable, and maintainable Flutter application using architectural best practices suitable for real-world production environments.
 
 ---
 
@@ -96,4 +79,4 @@ Youssef Waleed
 
 ---
 
-Movies App reflects a structured, scalable, and production-oriented Flutter application built with architectural clarity and engineering discipline.
+Movies App represents a structured and production-ready Flutter implementation designed with scalability and maintainability in mind.
