@@ -1,232 +1,94 @@
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=28&duration=3000&pause=1000&color=2563EB&center=true&vCenter=true&width=750&lines=Movies+App;Flutter+Clean+Architecture;Scalable+and+Maintainable+Architecture" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=30&duration=3000&pause=1000&color=2563EB&center=true&vCenter=true&width=950&lines=Movies+App;Flutter+Clean+Architecture+Implementation;Production-Ready+Modular+Design" />
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter" />
   <img src="https://img.shields.io/badge/Dart-Language-blue?logo=dart" />
-  <img src="https://img.shields.io/badge/Architecture-Clean_Architecture-green" />
+  <img src="https://img.shields.io/badge/Architecture-Clean_Architecture-success" />
   <img src="https://img.shields.io/badge/State%20Management-Provider-orange" />
   <img src="https://img.shields.io/badge/Dependency%20Injection-Injectable-purple" />
+  <img src="https://img.shields.io/badge/Pattern-Repository-lightgrey" />
 </p>
 
 ---
 
 # Movies App
 
-Movies App is a Flutter application built using Clean Architecture principles.  
-The project demonstrates clear separation of concerns, scalability, maintainability, and testability using a structured layered approach.
+Movies App is a scalable Flutter application built with a production-ready Clean Architecture approach.  
+The project focuses on strong separation of concerns, modular design, and maintainable code structure suitable for real-world applications.
 
-The application allows users to browse:
+This application demonstrates how to build a feature-driven architecture that keeps UI, business logic, and data sources fully decoupled while maintaining clear data flow and predictable state management.
 
-- Popular Movies  
-- Top Rated Movies  
-- Latest Releases  
+The app allows users to:
 
-All while maintaining a clean architectural foundation behind the scenes.
+- Browse Popular Movies  
+- Explore Top Rated Movies  
+- Discover Latest Releases  
+- Experience responsive UI updates driven by structured state management  
+
+The architecture ensures that each layer has a single responsibility, making the project easy to test, extend, and refactor without breaking other components.
 
 ---
 
 ## Demo
 
-Below is a preview of the application in action:
-
 <p align="center">
-  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif" width="700"/>
+  <a href="https://github.com/menna3lwan/movie_app/blob/dev/movie%20design.gif">
+    <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif" width="900"/>
+  </a>
 </p>
 
-If the preview does not load, you can view it directly here:  
-https://github.com/menna3lwan/movie_app/blob/dev/movie%20design.gif
+Click the preview above to view the full demo.
 
 ---
 
-## Architecture Overview
+## Technical Highlights
 
-This project follows a strict Clean Architecture structure:
-
-Presentation Layer  
-↓  
-Domain Layer  
-↓  
-Data Layer  
-
-Each layer communicates only with the layer directly beneath it, ensuring independence and modularity.
-
----
-
-## Application Flow
-
-The complete flow of the application works as follows:
-
-User opens Home Screen  
-→ HomeProvider triggers UseCase  
-→ UseCase calls Repository (Domain interface)  
-→ Repository Implementation (Data layer)  
-→ DataSource  
-→ API  
-→ Server returns JSON  
-→ JSON parsed into DTO  
-→ DTO converted into Entity  
-→ Provider updates state  
-→ UI rebuilds automatically  
-
-This structure guarantees that the UI never directly depends on API logic or JSON structure.
+- Clean Architecture layered structure  
+- Feature-based modular organization  
+- Repository pattern implementation  
+- DTO to Entity transformation  
+- Domain-driven design principles  
+- Dependency Injection using Injectable  
+- Structured state management with Provider  
+- Centralized API result handling  
+- Clear and maintainable folder hierarchy  
 
 ---
 
-## Layer Responsibilities
+## Engineering Focus
 
-### Presentation Layer
+This project emphasizes:
 
-Responsible for:
-- UI rendering  
-- State management  
-- User interaction handling  
-- Triggering UseCases  
+- Scalability for future features  
+- Replaceable data sources without affecting business logic  
+- Testable domain layer  
+- Predictable state transitions  
+- Clear abstraction boundaries  
 
-Contains:
-- Pages  
-- Providers  
-- State classes  
-- Reusable widgets  
-
-Does not contain:
-- Business logic  
-- API calls  
-- JSON parsing  
+The codebase is organized to reflect real production standards rather than a simple demo structure.
 
 ---
 
-### Domain Layer
+## Tech Stack
 
-Responsible for:
-- Business rules  
-- Application logic  
-- Entities  
-- Repository interfaces  
-- UseCases  
-
-Characteristics:
-- Pure Dart  
-- Independent from Flutter  
-- Independent from API  
-- Easily testable  
+- Flutter  
+- Dart  
+- Provider  
+- Injectable  
+- HTTP  
+- Clean Architecture Pattern  
 
 ---
 
-### Data Layer
+## Objective
 
-Responsible for:
-- API communication  
-- JSON parsing  
-- DTO models  
-- DataSources  
-- Repository implementations  
-
-Handles:
-- Converting JSON into DTOs  
-- Mapping DTOs into Entities  
-- Wrapping responses using ApiResult  
-
----
-
-## Repository Pattern
-
-The Domain defines repository contracts such as:
-
-abstract class PopularRepo  
-
-The Data layer provides the implementation:
-
-class PopularRepoImpl implements PopularRepo  
-
-This ensures:
-- Domain remains independent from data implementation  
-- Data sources can be replaced without affecting business logic  
-
----
-
-## Data Transformation Pipeline
-
-Server JSON  
-→ DTO Model  
-→ toEntity() conversion  
-→ MovieEntity  
-→ UI Rendering  
-
-Entities remain clean and independent from API or JSON structures.
-
----
-
-## State Management
-
-Provider is used to manage application state.
-
-Flow:
-
-UI triggers Provider method  
-→ Provider calls UseCase  
-→ Provider updates state  
-→ notifyListeners()  
-→ UI rebuilds  
-
-States are structured into:
-- Initial  
-- Loading  
-- Success  
-- Error  
-
-This ensures predictable and maintainable UI behavior.
-
----
-
-## Technologies Used
-
-Flutter  
-Dart  
-Provider  
-Injectable  
-HTTP  
-Clean Architecture Pattern  
-
----
-
-## Getting Started
-
-Clone the repository:
-
-git clone https://github.com/menna3lwan/movie_app.git  
-cd movie_app  
-flutter pub get  
-flutter run  
-
----
-
-## Testing Strategy
-
-The architecture allows:
-
-- Unit testing UseCases  
-- Mocking repositories  
-- Testing Provider logic  
-- Independent Domain testing  
-
----
-
-## Future Improvements
-
-- Pagination  
-- Local caching  
-- Movie details screen  
-- Search functionality  
-- Dark mode support  
-- Offline-first capability  
+The goal of this project is to showcase a real implementation of Clean Architecture in Flutter, demonstrating structured application design, modularity, and maintainability suitable for production environments.
 
 ---
 
 ## Team
-
-This project was developed by:
 
 Ahmed El-Sabbagh  
 Nour Waleed  
@@ -234,4 +96,4 @@ Youssef Waleed
 
 ---
 
-Movies App demonstrates a production-ready Clean Architecture implementation in Flutter with structured data flow, proper abstraction, and scalable design.
+Movies App reflects a structured, scalable, and production-oriented Flutter application built with architectural clarity and engineering discipline.
