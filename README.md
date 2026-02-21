@@ -19,7 +19,6 @@ Movies App is a scalable Flutter application built using Clean Architecture prin
 The project demonstrates a modular, maintainable, and production-ready structure designed for real-world development.
 
 The application allows users to:
-
 - Browse Popular Movies  
 - Explore Top Rated Movies  
 - Discover Latest Releases  
@@ -29,20 +28,17 @@ The codebase follows a feature-based structure with clear separation between pre
 
 ---
 
----
-
 ## 🎥 Demo Video
 
-https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif
-
----
+<p align="center">
+  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif" width="300" alt="Movies App Demo"/>
+</p>
 
 ---
 
 ## Overview
 
 This project showcases how to implement Clean Architecture in Flutter while maintaining:
-
 - Clear separation of concerns  
 - Structured data flow  
 - Independent domain layer  
@@ -69,23 +65,26 @@ The architecture ensures that UI never directly depends on API logic or JSON str
 
 ## Tech Stack
 
-Flutter  
-Dart  
-Provider  
-Injectable  
-HTTP  
-Clean Architecture Pattern  
+| Technology | Usage |
+|---|---|
+| Flutter | UI Framework |
+| Dart | Programming Language |
+| Provider | State Management |
+| Injectable | Dependency Injection |
+| HTTP | Network Requests |
+| Clean Architecture | Project Structure |
 
 ---
 
 ## Getting Started
 
 Clone the repository:
-
+```bash
 git clone https://github.com/menna3lwan/movie_app.git  
 cd movie_app  
 flutter pub get  
 flutter run  
+```
 
 ---
 
@@ -97,10 +96,14 @@ The goal of this project is to demonstrate a structured and scalable Flutter app
 
 ## Team
 
-Ahmed El-Sabbagh  
-Nour Waleed  
-Youssef Waleed  
+| Name |
+|---|
+| Ahmed El-Sabbagh |
+| Nour Waleed |
+| Youssef Waleed |
 
 ---
 
-Movies App represents a clean, scalable, and maintainable Flutter application designed with modern architectural best practices.
+<p align="center">
+  Movies App represents a clean, scalable, and maintainable Flutter application designed with modern architectural best practices.
+</p>
