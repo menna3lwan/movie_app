@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/theming/theme_cubit.dart';
+import 'package:movie_app/core/theming/theme_toggle.dart';
 import '../../../../core/di/service_locator.dart';
 import '../view_model/home_provider.dart';
 import '../view_model/home_states.dart';
@@ -45,6 +47,15 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    BlocBuilder<ThemeCubit, ThemeMode>(
+                      builder: (context, themeMode) {
+                        return ThemeToggle(
+                          onThemeChanged: (String themeMode) {
+                            context.read<ThemeCubit>().changeTheme(themeMode);
+                          },
+                        );
+                      },
+                    ),
                     const SizedBox(height: 16),
                     TopRatedWidget(
                       movies: topRatedState is TopRatedSuccessState

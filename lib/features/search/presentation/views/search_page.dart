@@ -30,6 +30,7 @@ class SearchPage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                  
                   TextField(
                     onChanged: (query) {
                       context.read<SearchCubit>().searchMovies(query);
@@ -71,8 +72,6 @@ class SearchPage extends StatelessWidget {
 
                         if (state is SearchSuccessState) {
                           final movies = state.movies;
-
-                          /// لو النتيجة فاضية، نعرض رسالة "No results"
 
                           if (movies.isEmpty) {
                             return const EmptyStateWidget(

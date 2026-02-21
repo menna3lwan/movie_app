@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/core/network/api_result.dart';
-import 'package:movie_app/features/details/data/similar_api.dart';
-import 'package:movie_app/features/details/data/similar_dto.dart';
+import 'package:movie_app/features/details/data/api/similar_api.dart';
+import 'package:movie_app/features/details/data/models/similar_dto.dart';
 import 'package:movie_app/features/details/domain/entity/similar_entity.dart';
 import 'package:movie_app/features/details/domain/repo/data_source/similar_data_source.dart';
 @Injectable(as: SimilarDataSource)

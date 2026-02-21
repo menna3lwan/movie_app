@@ -1,7 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/network/api_urls.dart';
 import 'package:movie_app/features/details/presentation/view/details_screen.dart';
@@ -31,20 +30,13 @@ class SearchItem extends StatelessWidget {
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-              fadeOutDuration: const Duration(milliseconds: 50),
-              imageUrl: imageUrl,
-              width: 110,
-              height: 160,
-              fit: BoxFit.cover,
-              placeholder: (_, __) => Container(
-                color: Theme.of(context).colorScheme.outlineVariant,
-                child: const Center(child: CircularProgressIndicator()),
-              ),
-              errorWidget: (_, __, ___) => _buildPlaceholder(),
-            ),
-          ),
+              borderRadius: BorderRadius.circular(16),
+              child: AppCachedImage(
+                imageUrl: imageUrl,
+                width: 110,
+                height: 160,
+                fit: BoxFit.cover,
+              )),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -76,8 +68,7 @@ class SearchItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.language,
-                        //!=================== icons colors ===============================
-                        color: Theme.of(context).colorScheme.onError,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                         size: 16,
                       ),
                       const SizedBox(width: 4),
@@ -92,7 +83,7 @@ class SearchItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.calendar_today,
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                         size: 16,
                       ),
                       const SizedBox(width: 4),
@@ -110,7 +101,7 @@ class SearchItem extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.description,
-                        color: Theme.of(context).colorScheme.onPrimary,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
                         size: 16,
                       ),
                       SizedBox(width: 4),
@@ -130,15 +121,6 @@ class SearchItem extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildPlaceholder() {
-    return Container(
-      width: 110,
-      height: 160,
-      color: Colors.grey[800],
-      child: const Icon(Icons.movie, color: AppColorsDark.textSecondary),
     );
   }
 }

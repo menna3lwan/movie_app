@@ -1,5 +1,4 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -13,7 +12,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:hive/hive.dart' as _i979;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../features/details/data/details_api.dart' as _i111;
+import '../../features/details/data/api/details_api.dart' as _i111;
 import '../../features/details/data/repo/data_source/details_data_source_imp.dart'
     as _i482;
 import '../../features/details/data/repo/data_source/similar_data_source_imp.dart'
@@ -22,7 +21,7 @@ import '../../features/details/data/repo/repository/detais_repo_imp.dart'
     as _i698;
 import '../../features/details/data/repo/repository/similar_repo_imp.dart'
     as _i362;
-import '../../features/details/data/similar_api.dart' as _i489;
+import '../../features/details/data/api/similar_api.dart' as _i489;
 import '../../features/details/domain/repo/data_source/details_data_source.dart'
     as _i267;
 import '../../features/details/domain/repo/data_source/similar_data_source.dart'
@@ -97,12 +96,16 @@ import '../../features/watch_list/presentation/view_model/cubit/watch_list_cubit
 import 'hive_module.dart' as _i576;
 
 extension GetItInjectableX on _i174.GetIt {
-  // initializes the registration of main-scope dependencies inside of GetIt
+// initializes the registration of main-scope dependencies inside of GetIt
   Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final gh = _i526.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
     final hiveModule = _$HiveModule();
     await gh.factoryAsync<_i979.Box<_i833.WatchlistMovieModel>>(
       () => hiveModule.getWatchlistBox(),
@@ -115,99 +118,67 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i828.TopRatedApi>(() => _i828.TopRatedApi());
     gh.factory<_i509.SearchApi>(() => _i509.SearchApi());
     gh.factory<_i267.DetailsDataSource>(
-      () => _i482.DetailsDataSourceImp(gh<_i111.DetailsApi>()),
-    );
+        () => _i482.DetailsDataSourceImp(gh<_i111.DetailsApi>()));
     gh.factory<_i102.ReleasesDataSource>(
-      () => _i598.ReleasesDataSourceImp(gh<_i310.ReleasesApi>()),
-    );
+        () => _i598.ReleasesDataSourceImp(gh<_i310.ReleasesApi>()));
     gh.factory<_i713.TopRatedDataSource>(
-      () => _i963.TopRatedDataSourceImp(gh<_i828.TopRatedApi>()),
-    );
+        () => _i963.TopRatedDataSourceImp(gh<_i828.TopRatedApi>()));
     gh.factory<_i373.PopularDataSource>(
-      () => _i316.PopularDataSourceImp(gh<_i934.PopularApi>()),
-    );
-    gh.factory<_i81.WatchlistDataSource>(
-      () => _i402.WatchlistDataSourceImpl(
-        gh<_i979.Box<_i833.WatchlistMovieModel>>(),
-      ),
-    );
+        () => _i316.PopularDataSourceImp(gh<_i934.PopularApi>()));
+    gh.factory<_i81.WatchlistDataSource>(() => _i402.WatchlistDataSourceImpl(
+        gh<_i979.Box<_i833.WatchlistMovieModel>>()));
     gh.factory<_i660.SearchRemoteDataSource>(
-      () => _i663.SearchRemoteDataSourceImpl(gh<_i509.SearchApi>()),
-    );
+        () => _i663.SearchRemoteDataSourceImpl(gh<_i509.SearchApi>()));
     gh.factory<_i944.PopularRepo>(
-      () => _i634.PopularRepoImp(gh<_i373.PopularDataSource>()),
-    );
+        () => _i634.PopularRepoImp(gh<_i373.PopularDataSource>()));
     gh.factory<_i598.SearchRepo>(
-      () => _i480.SearchRepoImpl(gh<_i660.SearchRemoteDataSource>()),
-    );
+        () => _i480.SearchRepoImpl(gh<_i660.SearchRemoteDataSource>()));
     gh.factory<_i526.ReleasesRepo>(
-      () => _i400.ReleasesRepoImp(gh<_i102.ReleasesDataSource>()),
-    );
+        () => _i400.ReleasesRepoImp(gh<_i102.ReleasesDataSource>()));
     gh.factory<_i462.SimilarDataSource>(
-      () => _i700.SimilarDataSourceImp(gh<_i489.SimilarApi>()),
-    );
+        () => _i700.SimilarDataSourceImp(gh<_i489.SimilarApi>()));
     gh.factory<_i687.WatchlistRepo>(
-      () => _i8.WatchlistRepoImpl(gh<_i81.WatchlistDataSource>()),
-    );
+        () => _i8.WatchlistRepoImpl(gh<_i81.WatchlistDataSource>()));
     gh.factory<_i662.DetailsRepo>(
-      () => _i698.DetaisRepoImp(gh<_i267.DetailsDataSource>()),
-    );
+        () => _i698.DetaisRepoImp(gh<_i267.DetailsDataSource>()));
     gh.factory<_i50.TopRatedRepo>(
-      () => _i939.TopRatedRepoImp(gh<_i713.TopRatedDataSource>()),
-    );
+        () => _i939.TopRatedRepoImp(gh<_i713.TopRatedDataSource>()));
     gh.factory<_i19.GetPopularUseCase>(
-      () => _i19.GetPopularUseCase(gh<_i944.PopularRepo>()),
-    );
+        () => _i19.GetPopularUseCase(gh<_i944.PopularRepo>()));
     gh.factory<_i13.GetReleasesUseCase>(
-      () => _i13.GetReleasesUseCase(gh<_i526.ReleasesRepo>()),
-    );
+        () => _i13.GetReleasesUseCase(gh<_i526.ReleasesRepo>()));
     gh.factory<_i274.GetTopRatedUseCase>(
-      () => _i274.GetTopRatedUseCase(gh<_i50.TopRatedRepo>()),
-    );
+        () => _i274.GetTopRatedUseCase(gh<_i50.TopRatedRepo>()));
     gh.factory<_i451.GetSearchMoviesUseCase>(
-      () => _i451.GetSearchMoviesUseCase(gh<_i598.SearchRepo>()),
-    );
+        () => _i451.GetSearchMoviesUseCase(gh<_i598.SearchRepo>()));
     gh.factory<_i713.AddToWatchlistUseCase>(
-      () => _i713.AddToWatchlistUseCase(gh<_i687.WatchlistRepo>()),
-    );
+        () => _i713.AddToWatchlistUseCase(gh<_i687.WatchlistRepo>()));
     gh.factory<_i253.GetWatchlistUseCase>(
-      () => _i253.GetWatchlistUseCase(gh<_i687.WatchlistRepo>()),
-    );
+        () => _i253.GetWatchlistUseCase(gh<_i687.WatchlistRepo>()));
     gh.factory<_i765.RemoveFromWatchlistUseCase>(
-      () => _i765.RemoveFromWatchlistUseCase(gh<_i687.WatchlistRepo>()),
-    );
+        () => _i765.RemoveFromWatchlistUseCase(gh<_i687.WatchlistRepo>()));
     gh.factory<_i436.SimilarRepo>(
-      () => _i362.SimilarRepoImp(gh<_i462.SimilarDataSource>()),
-    );
-    gh.factory<_i713.HomeProvider>(
-      () => _i713.HomeProvider(
-        gh<_i274.GetTopRatedUseCase>(),
-        gh<_i19.GetPopularUseCase>(),
-        gh<_i13.GetReleasesUseCase>(),
-      ),
-    );
+        () => _i362.SimilarRepoImp(gh<_i462.SimilarDataSource>()));
+    gh.factory<_i713.HomeProvider>(() => _i713.HomeProvider(
+          gh<_i274.GetTopRatedUseCase>(),
+          gh<_i19.GetPopularUseCase>(),
+          gh<_i13.GetReleasesUseCase>(),
+        ));
     gh.factory<_i398.GetDetailsUseCase>(
-      () => _i398.GetDetailsUseCase(gh<_i662.DetailsRepo>()),
-    );
+        () => _i398.GetDetailsUseCase(gh<_i662.DetailsRepo>()));
     gh.factory<_i794.SearchCubit>(
-      () => _i794.SearchCubit(gh<_i451.GetSearchMoviesUseCase>()),
-    );
-    gh.factory<_i449.WatchlistCubit>(
-      () => _i449.WatchlistCubit(
-        gh<_i253.GetWatchlistUseCase>(),
-        gh<_i713.AddToWatchlistUseCase>(),
-        gh<_i765.RemoveFromWatchlistUseCase>(),
-      ),
-    );
+        () => _i794.SearchCubit(gh<_i451.GetSearchMoviesUseCase>()));
+    gh.lazySingleton<_i449.WatchlistCubit>(() => _i449.WatchlistCubit(
+          gh<_i253.GetWatchlistUseCase>(),
+          gh<_i713.AddToWatchlistUseCase>(),
+          gh<_i765.RemoveFromWatchlistUseCase>(),
+        ));
     gh.factory<_i160.GetSimilarUseCase>(
-      () => _i160.GetSimilarUseCase(gh<_i436.SimilarRepo>()),
-    );
-    gh.factory<_i262.DetailsCubit>(
-      () => _i262.DetailsCubit(
-        gh<_i398.GetDetailsUseCase>(),
-        gh<_i160.GetSimilarUseCase>(),
-      ),
-    );
+        () => _i160.GetSimilarUseCase(gh<_i436.SimilarRepo>()));
+    gh.factory<_i262.DetailsCubit>(() => _i262.DetailsCubit(
+          gh<_i398.GetDetailsUseCase>(),
+          gh<_i160.GetSimilarUseCase>(),
+        ));
     return this;
   }
 }

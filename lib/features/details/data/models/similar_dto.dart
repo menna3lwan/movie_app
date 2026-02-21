@@ -1,4 +1,4 @@
-import 'package:movie_app/features/details/data/details_dto.dart';
+import 'package:movie_app/features/details/data/models/details_dto.dart';
 import 'package:movie_app/features/details/domain/entity/similar_entity.dart';
 
 class SimilarDto {

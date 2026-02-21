@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 
 import '../../../../core/common/widgets/shimmer_loading_widget.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -107,21 +108,13 @@ class _TopRatedCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: movie.posterPath != null
-              ? Image.network(
-                  '${ApiUrls.prefixImageUrl}${movie.posterPath}',
-                  width: 180,
-                  height: _TopRatedWidgetState._cardHeight,
-                  fit: BoxFit.cover,
-                )
-              : Container(
-                  width: 180,
-                  height: _TopRatedWidgetState._cardHeight,
-                  color: Theme.of(context).colorScheme.surface,
-                  child: const Icon(Icons.movie, color: Colors.grey),
-                ),
-        ),
+            borderRadius: BorderRadius.circular(16),
+            child: AppCachedImage(
+              imageUrl: '${ApiUrls.prefixImageUrl}${movie.posterPath}',
+              width: 180,
+              height: _TopRatedWidgetState._cardHeight,
+              fit: BoxFit.cover,
+            )),
         Positioned(bottom: -30, left: 6, child: _StrokedNumber(rank: rank)),
       ],
     );

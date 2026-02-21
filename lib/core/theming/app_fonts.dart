@@ -26,7 +26,7 @@ abstract class AppFonts {
   static const TextStyle titleMedium = TextStyle(
     color: AppColorsDark.textPrimary,
     fontSize: 16,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle bodyLarge = TextStyle(
     color: AppColorsDark.textPrimary,

@@ -24,7 +24,7 @@ abstract class AppColorsLight {
   static const Color secondary = Color(0xFF1E88E5);
   static const Color surface = Color(0xFFDFDFDF);
   static const Color textPrimary = Color(0xFF121212);
-  static const Color textSecondary = Color(0xFF9E9E9E);
+  static const Color textSecondary = Color.fromARGB(255, 104, 101, 101);
   static const Color star = Color(0xFFFF8700);
   static const Color offwhite = Color(0xFF757575);
   static const Color divider = Color(0xFF3A3F47);

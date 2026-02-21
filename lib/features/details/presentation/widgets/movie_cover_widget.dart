@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/network/api_urls.dart';
 import 'package:movie_app/features/details/presentation/view_model/details_states.dart';
@@ -24,19 +25,15 @@ class MovieCoverWidget extends StatelessWidget {
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadiusDirectional.only(
-                    bottomEnd: Radius.circular(16),
-                    bottomStart: Radius.circular(16),
-                  ),
-                  child: Image.network(
-                    height: 280,
-                    width: double.infinity,
-                    detailsState.detailsEntity.backdropPath.isEmpty
-                        ? AppAssets.dummyImage
-                        : '${ApiUrls.prefixImageUrl}${detailsState.detailsEntity.backdropPath}',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                    borderRadius: const BorderRadiusDirectional.only(
+                      bottomEnd: Radius.circular(16),
+                      bottomStart: Radius.circular(16),
+                    ),
+                    child: AppCachedImage(
+                      imageUrl: detailsState.detailsEntity.backdropPath.isEmpty
+                          ? AppAssets.dummyImage
+                          : '${ApiUrls.prefixImageUrl}${detailsState.detailsEntity.backdropPath}',
+                    )),
                 Positioned(
                   bottom: 16,
                   right: 16,
@@ -84,16 +81,16 @@ class MovieCoverWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          detailsState.detailsEntity.posterPath.isEmpty
-                              ? AppAssets.dummyImage
-                              : '${ApiUrls.prefixImageUrl}${detailsState.detailsEntity.posterPath}',
-                          width: 110,
-                          height: 165,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(15),
+                          child: AppCachedImage(
+                            imageUrl: detailsState
+                                    .detailsEntity.posterPath.isEmpty
+                                ? AppAssets.dummyImage
+                                : '${ApiUrls.prefixImageUrl}${detailsState.detailsEntity.posterPath}',
+                            width: 110,
+                            fit: BoxFit.cover,
+                            height: 165,
+                          )),
                       const SizedBox(width: 20),
                       Expanded(
                         child: Padding(

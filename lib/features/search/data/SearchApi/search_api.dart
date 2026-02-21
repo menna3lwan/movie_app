@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:movie_app/core/network/api_result.dart';
