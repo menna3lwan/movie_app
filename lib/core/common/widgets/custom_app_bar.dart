@@ -6,6 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final Widget? leading;
   final bool? centerTitle;
+
   const CustomAppBar({
     super.key,
     required this.title,
@@ -31,6 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       leading: leading,
       centerTitle: centerTitle,
+      actions: actions,
     );
   }
 

@@ -35,9 +35,11 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.primary,
         body: SafeArea(
-          child: BlocBuilder<HomeProvider, HomeStates>(
-            builder: (context, state) {
-              final combinedState = state as CombinedHomeState;
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16),
 
               final topRatedState = combinedState.topRatedState;
               final popularState = combinedState.popularState;
@@ -61,33 +63,43 @@ class _HomePageState extends State<HomePage> {
                       movies: topRatedState is TopRatedSuccessState
                           ? topRatedState.movies
                           : null,
-                      error: topRatedState is TopRatedErrorState
-                          ? topRatedState.message
+                      error: state is TopRatedError ? state.message
                           : null,
-                    ),
-                    const SizedBox(height: 16),
-                    PopularWidget(
-                      movies: popularState is PopularSuccessState
-                          ? popularState.movies
-                          : null,
-                      error: popularState is PopularErrorState
-                          ? popularState.message
-                          : null,
-                    ),
-                    const SizedBox(height: 8),
-                    ReleasesWidget(
-                      movies: releasesState is ReleasesSuccessState
-                          ? releasesState.movies
-                          : null,
-                      error: releasesState is ReleasesErrorState
-                          ? releasesState.message
-                          : null,
-                    ),
-                    const SizedBox(height: 24),
-                  ],
+                    );
+                  },
                 ),
-              );
-            },
+
+                const SizedBox(height: 16),
+
+                BlocBuilder<HomeProvider, HomeState>(
+                  buildWhen: (previous, current) => current is PopularState,
+                  builder: (context, state) {
+                    return PopularWidget(
+                      movies: state is PopularSuccess ? state.movies
+                          : null,
+                      error: state is PopularError ? state.message
+                          : null,
+                    );
+                  },
+                ),
+
+                const SizedBox(height: 8),
+
+                BlocBuilder<HomeProvider, HomeState>(
+                  buildWhen: (previous, current) => current is ReleasesState,
+                  builder: (context, state) {
+                    return ReleasesWidget(
+                      movies: state is ReleasesSuccess ? state.movies
+                          : null,
+                      error: state is ReleasesError ? state.message
+                          : null,
+                    );
+                  },
+                ),
+
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),

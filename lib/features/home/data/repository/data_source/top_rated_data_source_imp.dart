@@ -1,10 +1,9 @@
 import 'package:injectable/injectable.dart';
-
-import '../../../../core/network/api_result.dart';
-import '../../domain/entity/movie_entity.dart';
-import '../../domain/repo/data_source/top_rated_data_source.dart';
-import '../movies_response_dto.dart';
-import '../top_rated_api.dart';
+import '../../../../../core/network/api_result.dart';
+import '../../../domain/entity/movie_entity.dart';
+import '../../../domain/repo/data_source/top_rated_data_source.dart';
+import '../../models/movies_response_dto.dart';
+import '../../API/top_rated_api.dart';
 
 @Injectable(as: TopRatedDataSource)
 class TopRatedDataSourceImp implements TopRatedDataSource {

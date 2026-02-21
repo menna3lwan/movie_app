@@ -9,7 +9,7 @@ import '../../domain/use_case/get_top_rated_use_case.dart';
 import 'home_states.dart';
 
 @injectable
-class HomeProvider extends Cubit<HomeStates> {
+class HomeProvider extends Cubit<HomeState> {
   final GetTopRatedUseCase _getTopRatedUseCase;
   final GetPopularUseCase _getPopularUseCase;
   final GetReleasesUseCase _getReleasesUseCase;
@@ -18,55 +18,52 @@ class HomeProvider extends Cubit<HomeStates> {
     this._getTopRatedUseCase,
     this._getPopularUseCase,
     this._getReleasesUseCase,
-  ) : super(CombinedHomeState(
-          topRatedState: TopRatedLoadingState(),
-          popularState: PopularLoadingState(),
-          releasesState: ReleasesLoadingState(),
-        ));
-
-  CombinedHomeState get _current => state as CombinedHomeState;
+  ) : super(HomeInitial());
 
   Future<void> intent(HomeIntent event) async {
     switch (event) {
       case GetTopRatedIntent():
-        await getTopRatedMovies();
+        await _getTopRated();
       case GetPopularIntent():
-        await getPopularMovies();
+        await _getPopular();
       case GetReleasesIntent():
-        await getReleasesMovies();
+        await _getReleases();
     }
   }
 
-  Future<void> getTopRatedMovies() async {
-    emit(_current.copyWith(topRatedState: TopRatedLoadingState()));
+  Future<void> _getTopRated() async {
+    emit(TopRatedLoading());
     final result = await _getTopRatedUseCase.call();
+
     switch (result) {
       case ApiSuccess<List<MovieEntity>>():
-        emit(_current.copyWith(topRatedState: TopRatedSuccessState(result.data)));
+        emit(TopRatedSuccess(result.data));
       case ApiFailure<List<MovieEntity>>():
-        emit(_current.copyWith(topRatedState: TopRatedErrorState(result.message)));
+        emit(TopRatedError(result.message));
     }
   }
 
-  Future<void> getPopularMovies() async {
-    emit(_current.copyWith(popularState: PopularLoadingState()));
+  Future<void> _getPopular() async {
+    emit(PopularLoading());
     final result = await _getPopularUseCase.call();
+
     switch (result) {
       case ApiSuccess<List<MovieEntity>>():
-        emit(_current.copyWith(popularState: PopularSuccessState(result.data)));
+        emit(PopularSuccess(result.data));
       case ApiFailure<List<MovieEntity>>():
-        emit(_current.copyWith(popularState: PopularErrorState(result.message)));
+        emit(PopularError(result.message));
     }
   }
 
-  Future<void> getReleasesMovies() async {
-    emit(_current.copyWith(releasesState: ReleasesLoadingState()));
+  Future<void> _getReleases() async {
+    emit(ReleasesLoading());
     final result = await _getReleasesUseCase.call();
+
     switch (result) {
       case ApiSuccess<List<MovieEntity>>():
-        emit(_current.copyWith(releasesState: ReleasesSuccessState(result.data)));
+        emit(ReleasesSuccess(result.data));
       case ApiFailure<List<MovieEntity>>():
-        emit(_current.copyWith(releasesState: ReleasesErrorState(result.message)));
+        emit(ReleasesError(result.message));
     }
   }
 }

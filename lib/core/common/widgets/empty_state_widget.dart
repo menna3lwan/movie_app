@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_assets.dart';
 import '../../constants/common_strings.dart';
@@ -29,7 +30,7 @@ class EmptyStateWidget extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              message,
+              message.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.onPrimary,
@@ -39,7 +40,7 @@ class EmptyStateWidget extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              supMassage,
+              supMassage.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.outlineVariant,

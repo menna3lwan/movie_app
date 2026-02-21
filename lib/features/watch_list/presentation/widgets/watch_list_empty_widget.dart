@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
@@ -23,7 +24,7 @@ class WatchListEmptyWidget extends StatelessWidget {
                   .copyWith(color: Theme.of(context).colorScheme.onPrimary)),
           const SizedBox(height: 8),
           Text(
-            CommonStrings.noResultsSubtitle,
+            CommonStrings.noResultsSubtitle.tr().tr(),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Theme.of(context).colorScheme.outlineVariant,

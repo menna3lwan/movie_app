@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../domain/entity/movie_entity.dart';
+import '../../domain/entity/movie_entity.dart';
 import 'movie_dto.dart';
 
 @immutable

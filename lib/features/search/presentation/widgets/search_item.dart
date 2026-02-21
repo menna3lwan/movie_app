@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
