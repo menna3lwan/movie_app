@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/constants/app_colors.dart';
+import 'package:movie_app/core/theming/theme_cubit.dart';
+import 'package:movie_app/core/theming/theme_toggle.dart';
 import '../../../../core/di/service_locator.dart';
 import '../view_model/home_provider.dart';
 import '../view_model/home_states.dart';
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
     return BlocProvider.value(
       value: homeProvider,
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -41,11 +41,27 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const SizedBox(height: 16),
 
-                BlocBuilder<HomeProvider, HomeState>(
-                  buildWhen: (previous, current) => current is TopRatedState,
-                  builder: (context, state) {
-                    return TopRatedWidget(
-                      movies: state is TopRatedSuccess ? state.movies
+              final topRatedState = combinedState.topRatedState;
+              final popularState = combinedState.popularState;
+              final releasesState = combinedState.releasesState;
+
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BlocBuilder<ThemeCubit, ThemeMode>(
+                      builder: (context, themeMode) {
+                        return ThemeToggle(
+                          onThemeChanged: (String themeMode) {
+                            context.read<ThemeCubit>().changeTheme(themeMode);
+                          },
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TopRatedWidget(
+                      movies: topRatedState is TopRatedSuccessState
+                          ? topRatedState.movies
                           : null,
                       error: state is TopRatedError ? state.message
                           : null,

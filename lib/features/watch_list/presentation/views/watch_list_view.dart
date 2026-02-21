@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/common/widgets/shimmer_loading_widget.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/di/service_locator.dart';
 import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watch_list_cubit.dart';
@@ -37,7 +36,7 @@ class _WatchListViewState extends State<WatchListView> {
           title: CommonStrings.watchList.tr(),
           leading: Icon(Icons.menu),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: BlocBuilder<WatchlistCubit, WatchlistState>(
           builder: (context, state) {
             if (state is WatchlistEmpty) {

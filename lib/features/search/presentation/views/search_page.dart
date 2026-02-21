@@ -5,7 +5,7 @@ import 'package:movie_app/core/common/widgets/app_error_widget.dart';
 import 'package:movie_app/core/common/widgets/custom_app_bar.dart';
 import 'package:movie_app/core/common/widgets/empty_state_widget.dart';
 import 'package:movie_app/core/common/widgets/loading_indicator.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/core/constants/app_assets.dart';
 import 'package:movie_app/core/constants/common_strings.dart';
 import 'package:movie_app/core/di/service_locator.dart';
 import 'package:movie_app/features/search/presentation/view_model/search_cubit.dart';
@@ -20,7 +20,7 @@ class SearchPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchCubit(getIt()),
       child: Scaffold(
-        backgroundColor: AppColors.primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         appBar: const CustomAppBar(
           title: CommonStrings.search,
           showBackButton: false,
@@ -31,26 +31,30 @@ class SearchPage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
+                  
                   TextField(
                     onChanged: (query) {
                       context.read<SearchCubit>().searchMovies(query);
                     },
-                    style: const TextStyle(color: AppColors.textPrimary),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary),
                     decoration: InputDecoration(
-                      hintText: CommonStrings.searchHint.tr().tr(),
-                      hintStyle:
-                          const TextStyle(color: AppColors.textSecondary),
-                      suffixIcon: const Icon(
+                      hintText: CommonStrings.searchHint,
+                      hintStyle: TextStyle(
+                          color:
+                              Theme.of(context).colorScheme.onSurfaceVariant),
+                      suffixIcon: Icon(
                         Icons.search,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).colorScheme.outlineVariant,
                       ),
                       filled: true,
-                      fillColor: AppColors.surface,
+                      fillColor: Theme.of(context).colorScheme.surface,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(22),
                         borderSide: BorderSide.none,
                       ),
                     ),
+                    cursorColor: Theme.of(context).colorScheme.secondary,
                   ),
                   const SizedBox(height: 20),
                   Expanded(
@@ -67,18 +71,14 @@ class SearchPage extends StatelessWidget {
                           );
                         }
 
-              
                         if (state is SearchSuccessState) {
                           final movies = state.movies;
 
-                      
-
                           if (movies.isEmpty) {
-                            return EmptyStateWidget(
-                              message: CommonStrings.noResultsTitle.tr().tr(),
-                              supMassage:
-                                  CommonStrings.noResultsSubtitle.tr().tr(),
-                             
+                            return const EmptyStateWidget(
+                              message: CommonStrings.noResultsTitle,
+                              supMassage: CommonStrings.noResultsSubtitle,
+                              imagePath: AppAssets.imgNoResults,
                             );
                           }
 
@@ -95,11 +95,9 @@ class SearchPage extends StatelessWidget {
                           );
                         }
 
-
-                        return EmptyStateWidget(
+                        return const EmptyStateWidget(
                           // imagePath: AppAssets.imgFirstSearch,
-
-                          message: CommonStrings.searchHint.tr().tr(),
+                          message: CommonStrings.searchHint,
                         );
                       },
                     ),

@@ -142,10 +142,12 @@ class _StrokedNumber extends StatelessWidget {
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = 2
-              ..color = AppColors.secondary,
+              ..color = Theme.of(context).colorScheme.secondary,
           ),
         ),
-        Text('$rank', style: _style.copyWith(color: AppColors.background)),
+        Text('$rank',
+            style: _style.copyWith(
+                color: Theme.of(context).colorScheme.onSurface)),
       ],
     );
   }
@@ -169,7 +171,7 @@ class _PageIndicator extends StatelessWidget {
           width: isActive ? 24 : 8,
           height: 10,
           decoration: BoxDecoration(
-            color: isActive ? AppColors.secondary : AppColors.surface,
+            color: isActive ? AppColorsDark.secondary : AppColorsDark.surface,
             borderRadius: BorderRadius.circular(4),
           ),
         );

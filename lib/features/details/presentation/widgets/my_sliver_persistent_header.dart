@@ -52,7 +52,7 @@ class MySliverPersistentHeader extends SliverPersistentHeaderDelegate {
 
                 return IconButton(
                   icon: isSaved
-                      ? SvgPicture.asset(AppAssets.YellowBookMark)
+                      ? SvgPicture.asset(AppAssets.yellowBookMark)
                       : SvgPicture.asset(AppAssets.bookMark),
                   onPressed: () {
                     final currentState = cubit.state;

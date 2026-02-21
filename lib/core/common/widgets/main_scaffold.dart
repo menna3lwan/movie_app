@@ -33,30 +33,31 @@ class MainScaffold extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(color: AppColors.divider, width: 0.5),
+            top: BorderSide(
+                color: Theme.of(context).colorScheme.outline, width: 0.5),
           ),
         ),
         child: BottomNavigationBar(
           currentIndex: selectedIndex,
           onTap: (index) => _onTap(context, index),
-          selectedItemColor: AppColors.secondary,
-          unselectedItemColor: AppColors.textSecondary,
-          backgroundColor: AppColors.primary,
+          selectedItemColor: Theme.of(context).colorScheme.secondary,
+          unselectedItemColor: Theme.of(context).colorScheme.onSurfaceVariant,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           items: [
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AppAssets.iconHome,
                 colorFilter: const ColorFilter.mode(
-                  AppColors.textSecondary,
+                  AppColorsDark.textSecondary,
                   BlendMode.srcIn,
                 ),
               ),
               activeIcon: SvgPicture.asset(
                 AppAssets.iconHome,
                 colorFilter: const ColorFilter.mode(
-                  AppColors.secondary,
+                  AppColorsDark.secondary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -66,14 +67,14 @@ class MainScaffold extends StatelessWidget {
               icon: SvgPicture.asset(
                 AppAssets.iconSearch,
                 colorFilter: const ColorFilter.mode(
-                  AppColors.textSecondary,
+                  AppColorsDark.textSecondary,
                   BlendMode.srcIn,
                 ),
               ),
               activeIcon: SvgPicture.asset(
                 AppAssets.iconSearch,
                 colorFilter: const ColorFilter.mode(
-                  AppColors.secondary,
+                  AppColorsDark.secondary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -83,14 +84,14 @@ class MainScaffold extends StatelessWidget {
               icon: SvgPicture.asset(
                 AppAssets.iconBookmark,
                 colorFilter: const ColorFilter.mode(
-                  AppColors.textSecondary,
+                  AppColorsDark.textSecondary,
                   BlendMode.srcIn,
                 ),
               ),
               activeIcon: SvgPicture.asset(
                 AppAssets.iconBookmark,
                 colorFilter: const ColorFilter.mode(
-                  AppColors.secondary,
+                  AppColorsDark.secondary,
                   BlendMode.srcIn,
                 ),
               ),

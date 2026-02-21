@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/common/widgets/app_cached_image.dart';
 import 'package:movie_app/core/constants/app_assets.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/di/service_locator.dart';
-import 'package:movie_app/core/theming/app_fonts.dart';
 import 'package:movie_app/features/details/presentation/view/details_screen.dart';
 import 'package:movie_app/features/watch_list/domain/entity/watch_list_entity.dart';
 import 'package:movie_app/features/watch_list/presentation/view_model/cubit/watch_list_cubit.dart';
@@ -58,7 +56,8 @@ class WatchListItem extends StatelessWidget {
                 children: [
                   Text(
                     movie.title,
-                    style: AppFonts.bodyLarge,
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -66,7 +65,7 @@ class WatchListItem extends StatelessWidget {
                   InfoRowWidget(
                     icon: AppAssets.star,
                     text: movie.voteAverage.toString(),
-                    color: AppColors.star,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                   ),
                   const SizedBox(height: 5),
                   InfoRowWidget(

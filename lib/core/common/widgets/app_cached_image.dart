@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/app_colors.dart';
-
 class AppCachedImage extends StatelessWidget {
   final String imageUrl;
   final double? width;
@@ -30,7 +28,7 @@ class AppCachedImage extends StatelessWidget {
       placeholder: (context, url) => Container(
         width: width,
         height: height,
-        color: AppColors.surface,
+        color: Theme.of(context).colorScheme.surface,
         child: Center(
           child: CircularProgressIndicator(),
         ),
@@ -38,7 +36,7 @@ class AppCachedImage extends StatelessWidget {
       errorWidget: (context, url, error) => Container(
         width: width,
         height: height,
-        color: AppColors.surface,
+        color: Theme.of(context).colorScheme.surface,
         child: const Icon(Icons.movie, color: Colors.grey),
       ),
     );

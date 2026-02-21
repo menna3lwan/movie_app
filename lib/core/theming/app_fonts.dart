@@ -4,48 +4,48 @@ import '../constants/app_colors.dart';
 
 abstract class AppFonts {
   static const TextStyle appBarTitle = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
   static const TextStyle headlineLarge = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 32,
     fontWeight: FontWeight.w900,
   );
   static const TextStyle headlineMedium = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 24,
     fontWeight: FontWeight.bold,
   );
   static const TextStyle titleLarge = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
   static const TextStyle titleMedium = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 16,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle bodyLarge = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 16,
     fontWeight: FontWeight.normal,
   );
   static const TextStyle bodyMedium = TextStyle(
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
   static const TextStyle labelLarge = TextStyle(
-    color: AppColors.secondary,
+    color: AppColorsDark.secondary,
     fontSize: 14,
     fontWeight: FontWeight.w600,
   );
   static const TextStyle sectionTitle = TextStyle(
     fontFamily: 'Poppins',
-    color: AppColors.textPrimary,
+    color: AppColorsDark.textPrimary,
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );

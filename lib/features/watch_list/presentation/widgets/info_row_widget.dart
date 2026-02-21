@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/theming/app_fonts.dart';
 
 class InfoRowWidget extends StatelessWidget {
@@ -26,7 +25,7 @@ class InfoRowWidget extends StatelessWidget {
         Text(
           text,
           style: AppFonts.bodyMedium.copyWith(
-            color: color ?? AppColors.offwhite,
+            color: color ?? Theme.of(context).colorScheme.onInverseSurface,
             fontSize: fontSize,
           ),
         ),

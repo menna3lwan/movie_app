@@ -15,13 +15,6 @@ void main() async {
   Hive.registerAdapter(WatchlistMovieModelAdapter());
 
   await configureDependencies();
+  runApp(const MovieApp());
 
-  runApp(
-    EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ar')],
-      path: 'assets/lang',
-      fallbackLocale: const Locale('en'),
-      child: const MovieApp(),
-    ),
-  );
 }

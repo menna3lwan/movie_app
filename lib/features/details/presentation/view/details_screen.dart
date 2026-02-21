@@ -50,7 +50,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         BlocProvider.value(value: watchlistCubit),
       ],
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         body: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
@@ -89,7 +89,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     child: Center(
                       child: Text(
                         detailsState.message,
-                        style: const TextStyle(color: AppColors.error),
+                        style: const TextStyle(color: AppColorsDark.error),
                       ),
                     ),
                   );
@@ -112,7 +112,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     child: Center(
                       child: Text(
                         similarState.message,
-                        style: const TextStyle(color: AppColors.error),
+                        style: const TextStyle(color: AppColorsDark.error),
                       ),
                     ),
                   );

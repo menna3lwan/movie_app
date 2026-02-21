@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/core/theming/theme_cubit.dart';
 
 import 'core/constants/common_strings.dart';
 import 'core/routing/app_router.dart';
@@ -11,22 +13,26 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      builder: (context, child) {
-        return MaterialApp.router(
-          title: CommonStrings.appName.tr(),
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.darkTheme,
-          routerConfig: AppRouter.router,
-          
-          /// Localization
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-        );
-      },
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        builder: (context, child) {
+          return BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, currentThemeMode) {
+              return MaterialApp.router(
+                title: CommonStrings.appName,
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: currentThemeMode,
+                routerConfig: AppRouter.router,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
