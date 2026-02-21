@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../core/network/api_result.dart';
-import '../../domain/entity/movie_entity.dart';
-import '../../domain/repo/data_source/popular_data_source.dart';
-import '../movies_response_dto.dart';
-import '../popular_api.dart';
+import '../../../../../core/network/api_result.dart';
+import '../../../domain/entity/movie_entity.dart';
+import '../../../domain/repo/data_source/popular_data_source.dart';
+import '../../models/movies_response_dto.dart';
+import '../../API/popular_api.dart';
 
 @Injectable(as: PopularDataSource)
 class PopularDataSourceImp implements PopularDataSource {

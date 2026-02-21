@@ -1,65 +1,47 @@
 import '../../domain/entity/movie_entity.dart';
 
-abstract class HomeStates {}
+sealed class HomeState {}
 
-class HomeInitialState extends HomeStates {}
+class HomeInitial extends HomeState {}
 
-class TopRatedLoadingState extends HomeStates {}
+sealed class TopRatedState extends HomeState {}
 
-class TopRatedErrorState extends HomeStates {
-  String message;
-  TopRatedErrorState(this.message);
+class TopRatedLoading extends TopRatedState {}
+
+class TopRatedError extends TopRatedState {
+  final String message;
+  TopRatedError(this.message);
 }
 
-class TopRatedSuccessState extends HomeStates {
+class TopRatedSuccess extends TopRatedState {
   final List<MovieEntity> movies;
-  TopRatedSuccessState(this.movies);
+  TopRatedSuccess(this.movies);
 }
 
-class PopularLoadingState extends HomeStates {}
+sealed class PopularState extends HomeState {}
 
-class PopularErrorState extends HomeStates {
-  String message;
-  PopularErrorState(this.message);
+class PopularLoading extends PopularState {}
+
+class PopularError extends PopularState {
+  final String message;
+  PopularError(this.message);
 }
 
-class PopularSuccessState extends HomeStates {
+class PopularSuccess extends PopularState {
   final List<MovieEntity> movies;
-  PopularSuccessState(this.movies);
+  PopularSuccess(this.movies);
 }
 
-class ReleasesLoadingState extends HomeStates {}
+sealed class ReleasesState extends HomeState {}
 
-class ReleasesErrorState extends HomeStates {
-  String message;
-  ReleasesErrorState(this.message);
+class ReleasesLoading extends ReleasesState {}
+
+class ReleasesError extends ReleasesState {
+  final String message;
+  ReleasesError(this.message);
 }
 
-class ReleasesSuccessState extends HomeStates {
+class ReleasesSuccess extends ReleasesState {
   final List<MovieEntity> movies;
-  ReleasesSuccessState(this.movies);
-}
-
-class CombinedHomeState extends HomeStates {
-  final HomeStates topRatedState;
-  final HomeStates popularState;
-  final HomeStates releasesState;
-
-  CombinedHomeState({
-    required this.topRatedState,
-    required this.popularState,
-    required this.releasesState,
-  });
-
-  CombinedHomeState copyWith({
-    HomeStates? topRatedState,
-    HomeStates? popularState,
-    HomeStates? releasesState,
-  }) {
-    return CombinedHomeState(
-      topRatedState: topRatedState ?? this.topRatedState,
-      popularState: popularState ?? this.popularState,
-      releasesState: releasesState ?? this.releasesState,
-    );
-  }
+  ReleasesSuccess(this.movies);
 }

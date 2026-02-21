@@ -63,3 +63,10 @@ class GetSimilarIntent extends DetailsIntent {
   final int movieId;
   GetSimilarIntent(this.movieId);
 }
+// 1- add package flutter_native_splash in pubspec.yaml part of dependencies
+// 2- design splash android and ios screens
+//    download splash images (icon) in assets folder say splash_ios_android_11.png
+// 3- design splash android 12 screen
+//    # in figma create frame w:640 h:640 and r:320
+//    # create new frame w:960 h:960
+// 4- create file in rote app flutter_native_splash.yaml

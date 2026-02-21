@@ -4,15 +4,15 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-import '../../../core/network/api_result.dart';
-import '../../../core/network/api_urls.dart';
-import 'movies_response_dto.dart';
+import '../../../../core/network/api_result.dart';
+import '../../../../core/network/api_urls.dart';
+import '../models/movies_response_dto.dart';
 
 @injectable
-class ReleasesApi {
-  Future<ApiResult<MoviesResponseDto>> getReleasesMovies() async {
+class PopularApi {
+  Future<ApiResult<MoviesResponseDto>> getPopularMovies() async {
     try {
-      final url = Uri.https(ApiUrls.baseUrl, ApiUrls.releasesEndpoint, {
+      final url = Uri.https(ApiUrls.baseUrl, ApiUrls.popularEndpoint, {
         'api_key': ApiUrls.apiKey,
       });
       final response = await http.get(url);

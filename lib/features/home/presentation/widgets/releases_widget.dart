@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/common_strings.dart';
@@ -11,7 +12,7 @@ class ReleasesWidget extends BaseMovieSectionWidget {
   const ReleasesWidget({super.key, required this.movies, required this.error});
 
   @override
-  String get sectionTitle => CommonStrings.releasesMovies;
+  String get sectionTitle => CommonStrings.releasesMovies.tr();
 
   @override
   int get maxItems => 25;

@@ -4,9 +4,9 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-import '../../../core/network/api_result.dart';
-import '../../../core/network/api_urls.dart';
-import 'movies_response_dto.dart';
+import '../../../../core/network/api_result.dart';
+import '../../../../core/network/api_urls.dart';
+import '../models/movies_response_dto.dart';
 
 @injectable
 class TopRatedApi {
