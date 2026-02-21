@@ -15,14 +15,14 @@
 
 # Movies App
 
-Movies App is a scalable Flutter application built using Clean Architecture principles.
+Movies App is a scalable Flutter application built using Clean Architecture principles.  
 The project demonstrates a modular, maintainable, and production-ready structure designed for real-world development.
 
 The application allows users to:
-- Browse Popular Movies
-- Explore Top Rated Movies
-- Discover Latest Releases
-- Experience dynamic UI updates powered by structured state management
+- Browse Popular Movies  
+- Explore Top Rated Movies  
+- Discover Latest Releases  
+- Experience dynamic UI updates powered by structured state management  
 
 The codebase follows a feature-based structure with clear separation between presentation, business logic, and data layers.
 
@@ -31,7 +31,7 @@ The codebase follows a feature-based structure with clear separation between pre
 ## 🎥 Demo Video
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie%20design.gif" width="300" alt="Movies App Demo"/>
+  <img src="https://raw.githubusercontent.com/menna3lwan/movie_app/dev/movie_design.gif" width="300" alt="Movies App Demo"/>
 </p>
 
 ---
@@ -39,12 +39,12 @@ The codebase follows a feature-based structure with clear separation between pre
 ## Overview
 
 This project showcases how to implement Clean Architecture in Flutter while maintaining:
-- Clear separation of concerns
-- Structured data flow
-- Independent domain layer
-- Reusable and testable components
-- Replaceable data sources
-- Maintainable folder hierarchy
+- Clear separation of concerns  
+- Structured data flow  
+- Independent domain layer  
+- Reusable and testable components  
+- Replaceable data sources  
+- Maintainable folder hierarchy  
 
 The architecture ensures that UI never directly depends on API logic or JSON structures.
 
@@ -52,14 +52,14 @@ The architecture ensures that UI never directly depends on API logic or JSON str
 
 ## Key Highlights
 
-- Clean Architecture layered implementation
-- Repository Pattern abstraction
-- DTO to Entity transformation
-- Dependency Injection using Injectable
-- Centralized API result handling
-- Provider-based state management
-- Feature-based modular structure
-- Production-ready project organization
+- Clean Architecture layered implementation  
+- Repository Pattern abstraction  
+- DTO to Entity transformation  
+- Dependency Injection using Injectable  
+- Centralized API result handling  
+- Provider-based state management  
+- Feature-based modular structure  
+- Production-ready project organization  
 
 ---
 
@@ -80,10 +80,10 @@ The architecture ensures that UI never directly depends on API logic or JSON str
 
 Clone the repository:
 ```bash
-git clone https://github.com/menna3lwan/movie_app.git
-cd movie_app
-flutter pub get
-flutter run
+git clone https://github.com/menna3lwan/movie_app.git  
+cd movie_app  
+flutter pub get  
+flutter run  
 ```
 
 ---
@@ -97,11 +97,11 @@ The goal of this project is to demonstrate a structured and scalable Flutter app
 ## Team
 
 | Name |
+|---|
+| Ahmed El-Sabbagh |
 | Nour Waleed |
 | Youssef Waleed |
-| Ahmed El-Sabbagh |
 
-|---|
 ---
 
 <p align="center">
